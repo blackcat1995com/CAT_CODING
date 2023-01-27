@@ -1,0 +1,97 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+ul,ol{
+    list-style-type: none;
+}
+
+input{
+    outline: none;
+}
+
+body{
+    background: url(/static/images/bg.jpg) no-repeat;
+    background-size: cover;
+}
+
+.fl{
+    float: left;
+}
+
+.fr{
+    float: right;
+}
+
+/* 大盒子 */
+.container{
+    width: 800px;
+    height: 600px;
+    background-color: gainsboro;
+    margin: 90px auto;
+}
+
+/* 左侧大盒子 */
+.leftbox{
+    width: 300px;
+    height: 600px;
+    background-color: antiquewhite;
+    font-size: 14px;
+}
+
+/* 左侧盒子顶部 */
+.leftbox-top{
+    width: 300px;
+    height: 96px;
+    background-color: aliceblue;
+}
+
+/* 左侧盒子 聊天区 */
+.leftbox-chat{
+    width: 300px;
+    height: 504px;
+    background-color: cadetblue;
+}
+
+
+/* 右侧大盒子 */
+.rightbox{
+    width: 500px;
+    height: 600px;
+    background-color:aqua;
+    font-size: 16px;
+}
+
+/* 右侧盒子顶部 */
+.rightbox-top{
+    width: 500px;
+    height: 47px;
+    background-color:burlywood;
+}
+
+.rightbox-content{
+    width: 428px;
+    height: 526px;
+    background-color: deeppink;
+    margin: auto;
+}
+
+.rightbox-content-time{
+    width: 428px;
+    height: 64px;
+    font-size: 14px;
+    background-color:darkgreen;
+}
+
+.rightbox-content-chat{
+    width: 428px;
+    height: 422px;
+    background-color:antiquewhite;
+}
+
+.rightbox-content-send{
+    width: 428px;
+    height: 40px;
+    background-color: chartreuse;
+}
