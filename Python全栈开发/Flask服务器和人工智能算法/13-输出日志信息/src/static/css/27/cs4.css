@@ -1,0 +1,19 @@
+
+
+body{
+            background-image: url("../../images/upload/bg4.png");
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-repeat: no-repeat;
+
+        }
+form{
+             text-align:center;
+             margin-top:10px
+         }
+div{
+             text-align:center;
+             margin-top:190px
+
+         }

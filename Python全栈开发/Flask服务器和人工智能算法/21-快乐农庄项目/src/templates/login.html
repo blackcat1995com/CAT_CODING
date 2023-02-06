@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>快乐农庄</title>
+    <style>
+        html,body{
+            margin:0;
+            padding:0;
+            width:100%;
+            height:100%;
+        }
+        body{
+            background:url("/static/image/background/bg.png");
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+        }
+        #center{
+            width:320px;
+            height:510px;
+            margin:auto;
+            background:url("/static/image/icon/login.png");
+            position:relative;
+        }
+        #name,#pwd{
+            width:100px;
+            height:20px;
+            position:absolute;
+            left:153px;
+            bottom:228px;
+            background:none;
+            outline:none;
+            border:0px;
+        }
+        #pwd{
+            bottom:191px;
+        }
+        #login{
+            width:62px;
+            height:30px;
+            position:absolute;
+            bottom:146px;
+            left:128px;
+            display:inline-block;
+            background:none;
+            outline:none;
+            border:none;
+        }
+    </style>
+</head>
+<body>
+    <div id="center">
+        <form method="post" action="/user/login">
+            <input id="name" type="text" name="username"/>
+            <input id="pwd" type="password" name="password"/>
+            <input id="login" type="submit" value=""/>
+             <span style="position: absolute;bottom:130px;left:50%;margin-left:-63px;display:block;width:120px;text-align: center;font-size: 12px;color:red;font-weight:700;">{{msg}}</span>
+        </form>
+
+    </div>
+</body>
+</html>

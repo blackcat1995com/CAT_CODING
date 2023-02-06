@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>球员能力图</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="/static/css/radarChart.css">
+  <link rel="stylesheet" type="text/css" href="/static/css/radar.css">
+</head>
+<body>
+  <select id='sel'>
+    <option></option>
+  </select>
+  <div id='radar'></div>
+</body>
+<script type="text/javascript" src="/static/js/radarChart.js"></script>
+<script type="text/javascript" src='/static/js/radar.js'></script>
+<script type="text/javascript" src='/static/js/jquery/jquery-1.6.2.min.js'></script>
+<script type="text/javascript">
+  var select = document.getElementById('sel');
+  var data = {
+    maxValue: [40, 15, 10, 3, 4],
+    value: [0,0,0,0,0],
+    description: ["得分", "篮板", "助攻", "抢断", "盖帽"],
+    tooltipsString : function(description,value,maxValue){
+      return description + ":" + value;
+    }
+  }
+  window.onload = function(){
+    init_select();
+    get_info('哈基姆-奥拉朱旺');
+    select.onchange = function(){
+      get_info(select.value);
+    }
+  }
+
+  function init_select(){
+    var players = ["哈基姆-奥拉朱旺","科比-布莱恩特","斯科蒂-皮蓬","德维恩-韦德","凯文-加内特","卡尔-马龙","德克-诺维茨基", "凯文-杜兰特","查尔斯-巴克利","雷吉-米勒","迈克尔-乔丹","勒布朗-詹姆斯"];
+    str = '';
+    for(i in players){
+      option = '<option value="'+ players[i] +'">'+ players[i] +'</option>';
+      str += option;
+    }
+    select.innerHTML = str;
+  }
+
+  function get_info(player){
+    $.get('/info?player='+player,function(result){
+      data['value'] = [
+        parseFloat(result['score']),
+        parseFloat(result['rebound']),
+        parseFloat(result['assists']),
+        parseFloat(result['steals']),
+        parseFloat(result['blocking'])
+      ];
+      console.log(data);
+      show_ability(data);
+    })
+  }
+
+</script>
+</html>

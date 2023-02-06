@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>星星的秘密</title>
+    <link rel="stylesheet" href="../static/css/26/cs1.css">
+</head>
+<body id="home">
+
+<form action='/star' method='get' enctype='application/x-www-form-urlencoded'>
+    <div id="star">
+        <p id="des">请输入要查询的星球</p>
+        <input type='text' name='star' id='select'>
+        <input type='submit' value="提交">
+        {% if data %}
+            <p id="data">{{ data['name'] }}:{{ data['secret'] }}</p>
+        {% endif %}
+    </div>
+</form>
+
+
+
+
+</body>
+</html>

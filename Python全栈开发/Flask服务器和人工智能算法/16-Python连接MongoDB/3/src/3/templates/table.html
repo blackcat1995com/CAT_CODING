@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>数据展示</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="/static/css/table.css">
+</head>
+<body>
+  <header>
+    <h2>数据展示</h2>
+  </header>
+  <table>
+    <thead>
+      <tr>
+        {% if data[0] %}
+          {% for key in data[0].keys()%}
+            {% if key == "_id" %}
+              <th style="width:80px">{{key}}</th>
+            {% elif key == "title" %}
+              <th style="width:100px">{{key}}</th>
+            {% elif key == "author" %}
+              <th style="width:80px">{{key}}</th>
+            {% else %}
+              <th>{{key}}</th>
+            {% endif %}
+          {% endfor %}
+        {% elif data %}
+          {% for key in data.keys()%}
+            {% if key == "_id" %}
+              <th style="width:80px">{{key}}</th>
+            {% elif key == "title" %}
+              <th style="width:100px">{{key}}</th>
+            {% elif key == "author" %}
+              <th style="width:80px">{{key}}</th>
+            {% else %}
+              <th>{{key}}</th>
+            {% endif %}
+          {% endfor %}
+        {% endif %}
+      </tr>
+    </thead>
+    <tbody>
+      {% if data[0] %}
+        {% for dic in data %}
+          <tr>
+            {% for value in dic.values() %}
+            <td>{{value}}</td>
+            {% endfor %}
+          </tr>
+        {% endfor %}
+      {% elif data %}
+        <tr>
+          {% for value in data.values() %}
+            <td>{{value}}</td>
+          {% endfor %}
+        </tr>
+      {% endif %}
+    </tbody>
+  </table>
+</body>
+</html>

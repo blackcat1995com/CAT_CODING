@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>黑猫电影榜</title>
+		<script src="/static/js/jquery1.9.1.min.js"></script>
+		<script src="/static/js/jquery-ui.js"></script>
+		<script src="/static/js/jquery.transit.min.js"></script>
+		<script type="text/javascript" src='/static/js/template.js'></script>
+		<script type="text/javascript" src='/static/ajax/movie_ajax.js'></script>
+		<script type="text/javascript" src='/static/js/movies.js'></script>
+		<link href="/static/css/index.css" rel="stylesheet" type="text/css" />
+		<link href="/static/css/top.css" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" type="text/css" href="/static/css/animate.css">
+		<link rel="stylesheet" type="text/css" href="/static/css/style.css">
+	</head>
+
+	<body>
+		<style>
+			.new-banner-num {
+				position: absolute;
+				left: 0;
+				bottom: 3px;
+				width: 100%;
+				height: 10px;
+				text-align: center
+			}
+			
+			.new-banner-num .new-tbl-cell {
+				display: inline-block;
+				width: 7px;
+				height: 7px;
+				margin-left: 7px;
+				border-radius: 6px;
+				background-color: #fff;
+				text-indent: -9999px
+			}
+			
+			.new-banner-num .new-tbl-cell a {
+				display: block
+			}
+			
+			.new-banner-num .new-tbl-cell.on {
+				background-color: #e4393c
+			}
+			
+			.calender {
+				width: 255px;
+				margin: 50px auto;
+				top: 0;
+				left: 0;
+				border: 4px #D6D6D6 solid;
+				background: #EBEBEB;
+				position: absolute;
+				display: none;
+				z-index: 999;
+			}
+			
+			.calendertb {
+				width: 100%;
+			}
+			
+			.calendertb td {
+				width: 35px;
+				height: 35px;
+				border: 1px #CCCCCC solid;
+				text-align: center;
+				vertical-align: middle;
+				cursor: pointer;
+				font-size: 14px;
+				font-weight: bold;
+			}
+			
+			.calendertb td.hover,
+			.calendertb td.weekendhover {
+				background: #D6D6D6;
+			}
+			
+			.calendertb th {
+				width: 35px;
+				height: 30px;
+				border: 1px #CCCCCC solid;
+				text-align: center;
+				vertical-align: middle;
+				cursor: pointer;
+				color: #979797;
+			}
+			
+			.tdtoday {
+				background: #0080FF;
+				color: #fff;
+				width: 35px;
+				height: 35px;
+				border: 1px #CCCCCC solid;
+				text-align: center;
+				vertical-align: middle;
+				cursor: pointer;
+				font-size: 14px;
+				font-weight: bold;
+			}
+			
+			.getyear {
+				height: 35px;
+				line-height: 35px;
+				width: 100%;
+				text-align: center;
+			}
+			
+			.preMonth {
+				font-size: 14px;
+				font-weight: bold;
+				cursor: pointer;
+				margin-right: 18px;
+				color: #0080FF;
+			}
+			
+			.nextMonth {
+				font-size: 14px;
+				font-weight: bold;
+				cursor: pointer;
+				margin-left: 18px;
+				color: #0080FF;
+			}
+			
+			.zhezhao {
+				width: 100%;
+				height: 100%;
+				position: fixed;
+				z-index: 998;
+				background: #fff;
+				filter: alpha(opacity=10);
+				opacity: 0.1;
+				display: none;
+			}
+			
+			.mh_date {
+				height: 20px;
+				line-height: 20px;
+				cursor: pointer;
+				background: url(/static/images/dateIco.png)/*tpa=http://www.piaofang168.com/images/dateIco.png*/
+				no-repeat right center;
+				width: 188px;
+			}
+			
+			.submit {
+				background: #1499fc;
+				color: #FFF;
+				height: 22px;
+				line-height: 22px;
+				float: right;
+				border: none;
+				margin-top: 2px;
+				border-radius: 0 5px 5px 0;
+			}
+
+	.page{
+        width: 950px;
+        height: 500px;
+        position:relative;
+        top:60px;
+      }
+
+      #paging .first,#paging .prev,#paging .next,#paging .last{
+      	color:white;
+      }
+		</style>
+
+		<!-- header -->
+		<div class="time_logo">
+			<a href="#"><img src="/static/images/time-logo.png" width="222" height="89" border="0" alt=""></a>
+		</div>
+
+		<script type="text/javascript" src="/static/js/jquery.flexslider-min.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function () {
+				$('.focus').flexslider({
+					directionNav: true,
+					pauseOnAction: false
+				});
+			});
+		</script>
+
+		<div class="bar-line"></div>
+
+		<div class="focus_w">
+			<div class="dbk">
+				<div class="nav-menu ">
+					<li>
+						<a href="javascript:get_score();">高分推荐</a>
+					</li>
+					<li>
+						<a href="javascript:get_ranking();">票房排行</a>
+					</li>
+				</div>
+			</div>
+
+			<div class="focus1">
+				<div class="focus">
+					<ul class="slides">
+
+						<li style="width:-100.0%">
+							<a><img src="/static/images/banner/ph_fczlm4.jpg" /></a>
+						</li>
+						<li style="width:-100.0%">
+							<a><img src="/static/images/banner/ph_lldq.jpg" /></a>
+						</li>
+						<li style="width:-100.0%">
+							<a><img src="/static/images/banner/ph_zl2.jpg" /></a>
+						</li>
+						<li style="width:-100.0%">
+							<a><img src="/static/images/banner/ph_hhxd.jpg" /></a>
+						</li>
+					</ul>
+				</div>
+			</div>
+
+		</div>
+
+		<div class="bar-line"></div>
+
+		<div class="dbj1">
+
+			<!--票房统计-->
+			<div class="gross_wbg">
+				<div class="gross_total">
+					<table class="gross_table">
+						<tbody>
+
+						</tbody>
+					</table>
+					<div class="box-b">
+
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="clear"></div>
+		<div class="clear" style="height:25px;"></div>
+		<div class="bar-line"></div>
+		<div style="display:none;">
+
+	</body>
+	<script type="text/javascript" src='/static/js/data.js'></script>
+	<script type="text/javascript" src='/static/js/paging.js'></script>
+</html>
