@@ -6,9 +6,7 @@ process.stdin.on("readable", function(){
 });
 
 process.stdin.on("end", function(){
-	console.log(buf);
-    console.log(typeof(buf));
-    
-    let [a, b, c] = buf.split(" ").map(x => {return parseInt(x)});
-    console.log(typeof(a), b, c);
+
+    let [a, b] = buf.split(" ").map(x => {return parseInt(x)});
+    console.log(parseInt((a*10+b)/19));
 });

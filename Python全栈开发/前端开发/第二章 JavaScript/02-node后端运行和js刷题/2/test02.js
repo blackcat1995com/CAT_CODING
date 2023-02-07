@@ -1,14 +1,8 @@
-let buf = "";
+let name = 'cat', age = 28;
+let info = `My name is ${name}, I\'m ${age} years old.`;
 
-process.stdin.on("readable", function(){
-    let chunk = process.stdin.read();
-    if(chunk) buf += chunk.toString();
-});
+console.log(info);
+console.log(`My name is ${name}, I\'m ${age} years old.`);
 
-process.stdin.on("end", function(){
-    let [a, b, c] = buf.split(" ").map(x => {return parseInt(x)});
-   console.log((a + b) * c); 
-});
-
-
-// P109
+console.log(2 == "2")
+console.log(2 === "2")
