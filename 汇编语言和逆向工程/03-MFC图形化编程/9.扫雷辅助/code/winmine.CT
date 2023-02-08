@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="29">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>0</ID>
+      <Description>"雷数1"</Description>
+      <VariableType>4 Bytes</VariableType>
+      <Address>winmine.exe+5194</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>1</ID>
+      <Description>"雷数2"</Description>
+      <VariableType>4 Bytes</VariableType>
+      <Address>winmine.exe+5330</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>2</ID>
+      <Description>"雷数3"</Description>
+      <VariableType>4 Bytes</VariableType>
+      <Address>winmine.exe+56A4</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>3</ID>
+      <Description>"行数1"</Description>
+      <VariableType>4 Bytes</VariableType>
+      <Address>winmine.exe+5338</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>4</ID>
+      <Description>"行数2"</Description>
+      <VariableType>4 Bytes</VariableType>
+      <Address>winmine.exe+56A8</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>5</ID>
+      <Description>"列数1"</Description>
+      <VariableType>4 Bytes</VariableType>
+      <Address>winmine.exe+5334</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>6</ID>
+      <Description>"列数2"</Description>
+      <VariableType>4 Bytes</VariableType>
+      <Address>winmine.exe+56AC</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>7</ID>
+      <Description>"棋盘基址"</Description>
+      <VariableType>Byte</VariableType>
+      <Address>winmine.exe+5361</Address>
+    </CheatEntry>
+  </CheatEntries>
+  <UserdefinedSymbols/>
+</CheatTable>
