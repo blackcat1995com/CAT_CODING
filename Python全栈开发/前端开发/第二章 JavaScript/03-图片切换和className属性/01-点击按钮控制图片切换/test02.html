@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>上下图像切换</title>
+
+    <style>
+        body{
+            text-align: center;
+        }
+
+        button{
+            margin: 10px;
+        }
+
+        #box{
+            height: 400px;
+            width: 500px;
+            background: url(./images/003.jpg) no-repeat;
+            margin: auto;
+            background-size: contain;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <button id="btn1">UP</button>
+    <button id="btn2">DOWN</button>
+    <div id="box"></div>
+</body>
+
+<script>
+    let btn1 = document.getElementById("btn1");
+    let btn2 = document.getElementById("btn2");
+    let box = document.getElementById("box");
+
+    btn1.onclick = function(){
+        box.style.backgroundImage = "url(./images/003.jpg)";
+    }
+
+    btn2.onclick = function(){
+        box.style.backgroundImage = "url(./images/002.jpg)";
+    }
+</script>
+</html>

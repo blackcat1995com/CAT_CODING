@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>抛物线</title>
+		<style>
+			body {
+				background-color: #A5DEFD;
+			}
+			#container {
+				width: 1080px;
+				height: 720px;
+				border: 1px solid red;
+				margin: auto;
+				position: relative;
+				overflow: hidden;
+			}
+			#tank {
+				width: 240px;
+				height: 245px;
+				background: url(images/tank.png);
+				position: absolute;
+				left: 0;
+				bottom: 0;
+			}
+			#bullet {
+				width: 60px;
+				height: 57px;
+				background: url(images/bullet.png);
+				position: absolute;
+				left: 200px;
+				top: 510px;
+			}
+
+		</style>
+	</head>
+	<body>
+		<div id="container">
+			<div id="tank">
+
+			</div>
+			<div id="bullet">
+
+			</div>
+		</div>
+		<script>
+			let bullet = document.getElementById("bullet");
+			let leftStep = 10;
+			let topStep = 5;
+
+			setInterval(function(){
+				let left = bullet.offsetLeft;
+				let top = bullet.offsetTop;
+
+				if(left <= 1000){
+					left += leftStep;
+					top -= topStep;
+					topStep -= 0.1;
+				}
+				else{
+					left = 200;
+					top = 510;
+
+					leftStep = 10;
+					topStep = 5;
+				}
+
+				bullet.style.left = left + "px";
+				bullet.style.top = top + "px";
+			}, 10);
+		</script>
+	</body>
+</html>
