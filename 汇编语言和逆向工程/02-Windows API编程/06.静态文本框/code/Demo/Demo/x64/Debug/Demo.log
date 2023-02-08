@@ -1,0 +1,7 @@
+﻿  main.cpp
+E:\黑猫系列课程\游戏辅助和逆向工程\第2章 Windows API编程\2.Windows窗口程序\code\Demo\Demo\main.cpp(34,21): error C2664: “ATOM RegisterClassA(const WNDCLASSA *)”: 无法将参数 1 从“WNDCLASS *”转换为“const WNDCLASSA *”
+E:\黑猫系列课程\游戏辅助和逆向工程\第2章 Windows API编程\2.Windows窗口程序\code\Demo\Demo\main.cpp(34,17): message : 与指向的类型无关；强制转换要求 reinterpret_cast、C 样式强制转换或函数样式强制转换
+D:\Windows Kits\10\Include\10.0.22000.0\um\winuser.h(4285,1): message : 参见“RegisterClassA”的声明
+E:\黑猫系列课程\游戏辅助和逆向工程\第2章 Windows API编程\2.Windows窗口程序\code\Demo\Demo\main.cpp(37,1): error C2664: “HWND CreateWindowExA(DWORD,LPCSTR,LPCSTR,DWORD,int,int,int,int,HWND,HMENU,HINSTANCE,LPVOID)”: 无法将参数 2 从“const wchar_t [9]”转换为“LPCSTR”
+E:\黑猫系列课程\游戏辅助和逆向工程\第2章 Windows API编程\2.Windows窗口程序\code\Demo\Demo\main.cpp(37,1): message : 与指向的类型无关；强制转换要求 reinterpret_cast、C 样式强制转换或函数样式强制转换
+D:\Windows Kits\10\Include\10.0.22000.0\um\winuser.h(4417,1): message : 参见“CreateWindowExA”的声明
