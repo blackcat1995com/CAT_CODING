@@ -1,0 +1,2 @@
+PlatformToolSet=v142:VCToolArchitecture=Native32Bit:VCToolsVersion=14.29.30133:VCServicingVersionMFC=14.29.30136:VCServicingVersionATL=14.29.30136:VCServicingVersionCrtHeaders=14.29.30136:VCServicingVersionCompilers=14.29.30136:TargetPlatformVersion=10.0.22000.0:
+Debug|Win32|E:\黑猫系列课程\Windows API MFC编程 游戏辅助和逆向工程\第4章 动态链接库\1.静态链接库和动态链接库\code\TestDll\|

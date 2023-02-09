@@ -1,0 +1,4 @@
+﻿  main.cpp
+E:\黑猫系列课程\Windows API MFC编程 游戏辅助和逆向工程\第4章 动态链接库\1.静态链接库和动态链接库\code\TestDll\TestDll\main.cpp(7,55): warning C4273: “add”: dll 链接不一致
+E:\黑猫系列课程\Windows API MFC编程 游戏辅助和逆向工程\第4章 动态链接库\1.静态链接库和动态链接库\code\MyDll\MyDll\cat.h(3,38): message : 参见“add”的前一个定义
+  TestDll.vcxproj -> E:\黑猫系列课程\Windows API MFC编程 游戏辅助和逆向工程\第4章 动态链接库\1.静态链接库和动态链接库\code\TestDll\Debug\TestDll.exe
