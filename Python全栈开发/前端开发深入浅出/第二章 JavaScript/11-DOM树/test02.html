@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="box">
+        <p id="box-item1">第一个child节点</p>
+        <h4>第二个child节点</h4>
+        <div id="box-item3">第三个child节点</div>
+    </div>
+
+    <script>
+        let box_item1 = document.getElementById("box-item1");
+        console.log(box_item1.parentNode);
+
+        let h1 = document.createElement("h1");
+        h1.innerHTML = "新节点 第三个child节点";
+
+        let box_item3 = document.getElementById("box-item3");
+
+        let box = document.getElementById("box");
+
+        box.replaceChild(h1, box_item3);
+    </script>
+</body>
+</html>
