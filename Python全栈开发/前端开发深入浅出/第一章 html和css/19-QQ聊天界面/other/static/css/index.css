@@ -1,0 +1,226 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+ul, ol{
+    list-style-type: none;
+}
+
+body{
+    background: url(/static/images/bg.jpg) no-repeat;
+    background-size: cover;
+    font-size: 16px;
+}
+
+/* 大盒子 */
+.container{
+    width: 800px;
+    height: 600px;
+    background-color: antiquewhite;
+    margin: 80px auto;
+    background-color: white;
+}
+
+/* 左侧盒子 */
+.container-left{
+    width: 300px;
+    height: 100%;
+    background-color: aqua;
+    float: left;
+}
+
+/* 左侧盒子上方搜索 */
+.container-left-top{
+    width: 100%;
+    height: 96px;
+    background-color:white;
+    box-sizing: border-box;
+    padding: 29px;
+}
+
+.container-left-top>input{
+    width: 188px;
+    height: 42px;
+    padding: 0 15px;
+    box-sizing: border-box;
+    border-radius: 21px;
+    border: 1px solid #e6e6e6;
+    background-color: #eceff1;
+    outline: none;
+}
+
+.container-left-top>a{
+    display: inline-block;
+    width: 42px;
+    height: 42px;
+    background-color: #00B0FF;
+    border-radius: 50%;
+    vertical-align: middle;
+    position:relative;
+}
+.container-left-top>a>img{
+    position: absolute;
+    top:12px;
+    left:14px;
+}
+
+.container-left-bottom{
+    width: 300px;
+    height: 504px;
+    /* background-color: bisque; */
+    background-color: white;
+    position: relative;
+    /* text-overflow: ellipsis; */
+}
+
+/* 左侧盒子下方区域 */
+.container-left-bottom img{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 12px;
+    float: left;
+}
+
+.container-left-bottom ul li{
+    width: 300px;
+    height: 72px;
+    display: block;
+    /* background-color: aqua; */
+    background-color: white;
+    box-sizing: border-box;
+    padding: 12px 30px 16px;
+    font-size: 14px;
+    cursor: pointer;
+    /* text-overflow: ellipsis; */
+    position: relative;
+    /* border-bottom: 2px solid gray; */
+}
+
+.container-left-bottom .name{
+    font-weight: bold;
+    float: left;
+}
+
+.container-left-bottom .time{
+    /* display: inline-block; */
+    position: absolute;
+    right: 20px;
+    /* float: left;
+    margin-left: 90px; */
+}
+
+.container-left-bottom .history{
+    /* position: absolute;
+    top: 30px; */
+    /* display: block; */
+    position: absolute;
+    top: 38px;
+    left: 82px;
+    /* text-overflow: ellipsis; */
+}
+
+.container-left-bottom .line{
+    width: 250px;
+    height: 1px;
+    background-color: lightgray;
+    position:relative;
+    top:55px;
+}
+
+/* .container-left-bottom li::after{
+    content: '';
+    display: block;
+    width: 200px;
+    height: 1px;
+    background-color: gray;
+} */
+
+/* 右侧盒子 */
+.container-right{
+    width: 500px;
+    height: 100%;
+    background-color:chartreuse;
+    float: left;
+}
+
+/* 右侧盒子 上半部分 */
+.container-right-top{
+    width: 500px;
+    height: 47px;
+    /* background-color: antiquewhite; */
+    font-size: 15px;
+    font-weight: bold;
+    background-color: #ECEFF1;
+    box-sizing: border-box;
+    padding: 15px 29px;
+}
+
+.container-right-bottom{
+    width: 500px;
+    height: 553px;
+    /* background-color:#00B0FF; */
+    background-color: white;
+}
+
+.container-right-bottom-wrap{
+    width: 427px;
+    height: 460px;
+    /* background-color: bisque; */
+    margin: auto;
+}
+
+.container-right-bottom-wrap-time{
+    width: 100%;
+    height: 73px;
+    background-color: white;
+    font-size: 14px;
+    color:#999999;
+    text-align: center;
+    line-height: 73px;
+}
+
+.container-right-bottom-wrap-chat li{
+    padding: 13px 14px;
+    background-color: cornflowerblue;
+    margin-bottom: 8px;
+    display: inline-block;
+    border-radius: 5px;
+    color: white;
+}
+
+.container-right-bottom-wrap-chat .you{
+    background-color: #00b0ff;
+}
+
+.container-right-bottom-wrap-chat .me{
+    background-color: #eceff1;
+    /* position: relative;
+    right: 0; */
+    margin-left: 250px;
+}
+
+.container-right-bottom-input{
+    width:442px;
+    height: 42px;
+    background-color: aqua;
+    position: relative;
+    /* bottom: 5px; */
+    top:130px;
+}
+
+/* .container-right-bottom-input .squre{
+    width: 20px;
+    height: 42px;
+    background-color: red;
+    display: inline-block;
+} */
+
+.voice{
+    display: inline-block;
+    width: 20px;
+    height: 42px;
+    line-height: 42px;
+    background: url(/static/images/yuyin.png) no-repeat;
+}

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>图片切换</title>
+    <style>
+        #d1{
+            width: 500px;
+            height: 400px;
+        }
+    </style>
+</head>
+<body>
+    <img src="./images/11.jpg" id="d1">
+    <button id="btn">停止跳跃</button>
+</body>
+
+<script>
+
+    let d1 = document.getElementById("d1");
+
+    let n = 11;
+    let timer = setInterval(function(){
+        n++;
+        if(n > 12)
+            n = 11;
+        d1.src = `./images/${n}.jpg`;
+    }, 500);
+
+    btn.onclick = function(){
+        clearInterval(timer);
+    }
+</script>
+</html>

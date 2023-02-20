@@ -1,0 +1,203 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+ul,ol{
+    list-style-type: none;
+}
+
+input{
+    outline: none;
+}
+
+body{
+    background: url(/static/images/bg.jpg) no-repeat;
+    background-size: cover;
+}
+
+.fl{
+    float: left;
+}
+
+.fr{
+    float: right;
+}
+
+/* 大盒子 */
+.container{
+    width: 800px;
+    height: 600px;
+    /* background-color: gainsboro; */
+    margin: 90px auto;
+}
+
+/* 左侧大盒子 */
+.leftbox{
+    width: 300px;
+    height: 600px;
+    /* background-color: antiquewhite; */
+    background-color: white;
+    font-size: 14px;
+}
+
+/* 左侧盒子顶部 */
+.leftbox-top{
+    box-sizing: border-box;
+    padding: 29px;
+    width: 300px;
+    height: 96px;
+    background-color: aliceblue;
+}
+
+/* 左侧盒子搜索区 */
+.leftbox-top>input{
+    width: 188px;
+    height: 42px;
+    background-color: #eceff1;
+    padding: 0 15px;
+    box-sizing: border-box;
+    vertical-align: top;
+    border: 1px solid #e6e6e6;
+    background-color: #eceff1;
+    border-radius: 21px;
+    position: relative;
+    left: -3px;
+}
+
+a{
+    display: inline-block;
+    width: 42px;
+    height: 42px;
+    background-color: #00b0ff;
+    margin-left: 7px;
+    border-radius: 50%;
+}
+
+.leftbox-top img{
+    position: relative;
+    top:12px;
+    left: 14px;
+}
+
+
+/* 左侧盒子 聊天区 */
+.leftbox-chat{
+    margin: auto;
+    /* 每一个子盒子高度73 */
+    width: 240px;
+    height: 438px;
+    background-color: white;
+    /* background-color: cadetblue; */
+}
+
+.leftbox-chat>div{
+    width: 240px;
+    height: 73px;
+    box-sizing: border-box;
+    padding-top: 12px;
+    border-bottom: 1px solid #e6e6e6;
+}
+
+.leftbox-chat div:nth-child(odd){
+    /* background-color: #00b0ff; */
+}
+
+.leftbox-chat img{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    float: left;
+    margin-right: 10px;
+}
+
+.leftbox-chat .text{
+    width: 190px;
+    height: 40px;
+    /* background-color:red; */
+    float: left;
+    position: relative;
+}
+
+.leftbox-chat .time{
+    /* float: right; */
+    position: absolute;
+    /* left: 80px; */
+    right: 0;
+}
+
+.leftbox-chat .chat{
+    position: absolute;
+    left: 0;
+    top: 23px;
+}
+
+/* 右侧大盒子 */
+.rightbox{
+    width: 500px;
+    height: 600px;
+    background-color:aqua;
+    font-size: 16px;
+}
+
+/* 右侧盒子顶部 */
+.rightbox-top{
+    width: 500px;
+    height: 47px;
+    background-color:#eceff1;
+    box-sizing: border-box;
+    padding: 14px 29px;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.rightbox-content{
+    width: 428px;
+    height: 526px;
+    background-color: deeppink;
+    margin: auto;
+}
+
+.rightbox-content-time{
+    width: 428px;
+    height: 64px;
+    font-size: 14px;
+    background-color:darkgreen;
+    color: #999999;
+    font-size: 14px;
+    line-height: 64px;
+    text-align: center;
+}
+
+.rightbox-content-chat{
+    width: 428px;
+    height: 422px;
+    background-color:antiquewhite;
+}
+
+.rightbox-content-send{
+    width: 428px;
+    height: 40px;
+    background-color: chartreuse;
+}
+
+/* 右侧聊天内容 */
+.rightbox-content-chat li{
+    color: white;
+    background-color:blueviolet;
+    /* font-size: 16px; */
+    display: inline-block;
+    padding: 13px 14px;
+    margin-bottom: 8px;
+    border-radius: 5px;
+}
+
+.rightbox-content-chat .you{
+    background-color: #00b0ff;
+}
+
+.rightbox-content-chat .me{
+    background-color: #eceff1;
+    position:relative;
+    left:270px;
+}

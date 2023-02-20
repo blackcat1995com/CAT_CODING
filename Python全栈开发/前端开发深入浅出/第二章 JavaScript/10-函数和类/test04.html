@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class People{
+            constructor(name, age){
+                this.name = name;
+                this.age = age;
+                People.color = "yellow";
+            }
+
+            output(){
+                console.log(`My name is ${this.name}.I am ${this.age} years old.`);
+            }
+
+            static current_class_name(){
+                console.log("People");
+            }
+        }
+
+        // let zhangsan = new People("张三", 30);
+        // zhangsan.output();
+
+        class Students extends People{
+            constructor(name, age, score){
+                super(name, age);
+                this.score = score;
+            }
+
+            output(){
+                console.log(`My name is ${this.name}.I am ${this.age} years old.My total score is ${this.score}.`);
+            }
+        }
+
+        let xiaohong = new Students("小红", 12, 300);
+        xiaohong.output();
+
+        People.current_class_name();
+        console.log(People.color);
+    </script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>margin</title>
+		<style>
+			* {
+				padding: 0;
+				margin: 0;
+			}
+
+			/* 双伪元素清除法 */
+
+			.father {
+				width: 300px;
+				height: 300px;
+				background-color: red;
+				margin-bottom: 100px;
+				/* margin的塌陷现象 */
+				/* overflow: hidden; */
+				/* border-top: 1px solid red; */
+				/* padding-top: 1px; */
+
+				/* display: inline-block; */
+				/* float: left; */
+			}
+
+			.father::before{
+				content: '';
+				display: table;
+				
+			}
+
+			.son {
+				width: 100px;
+				height: 100px;
+				background-color: green;
+				margin-top:100px;
+			}
+
+			/* margin合并 取两边的最大值 */
+			.box2{
+				width: 400px;
+				height: 400px;
+				background-color: aquamarine;
+				margin-top: 30px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="father">
+			<div class="son"></div>
+		</div>
+
+		<div class="box2">
+
+		</div>
+	</body>
+</html>

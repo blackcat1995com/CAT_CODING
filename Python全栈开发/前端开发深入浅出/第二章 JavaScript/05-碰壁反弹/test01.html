@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>碰壁反弹</title>
+	<style>
+		#container{
+			width: 300px;
+			height: 300px;
+			border: 1px solid red;
+		}
+
+		#box{
+			width: 50px;
+			height: 50px;
+			background-color: skyblue;
+			border-radius: 25px;
+			position: relative;
+			top: 100px;
+		}
+	</style>
+</head>
+<body>
+	<div id="container">
+		<div id="box">
+
+		</div>
+	</div>
+</body>
+
+<script>
+	let box = document.getElementById("box");
+
+	let maxWidth = 250, maxHeight = 250;
+
+	box.l = box.offsetLeft;
+	box.t = box.offsetTop;
+	box.speedX = 3; 
+	box.speedY = 3; 
+
+	setInterval(function(){
+		box.l += box.speedX;
+		box.t += box.speedY;
+		if(box.l >= maxWidth || box.l <= 0)
+			box.speedX *= -1;
+		if(box.t <= 0 || box.t >= maxHeight)
+			box.speedY *= -1;
+
+		box.style.left = box.l + "px";
+		box.style.top = box.t + "px";
+	}, 10);
+</script>
+</html>

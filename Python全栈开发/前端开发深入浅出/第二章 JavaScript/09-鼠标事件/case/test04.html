@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>拖拽效果</title>
+        <style>
+        #img{
+            width:200px;
+            height: 100px;
+            position:absolute;
+        }
+        </style>
+    </head>
+    <body>
+        <img src="images/1.jpg" id="img"/>
+        <script>
+            /*完成拖拽效果*/
+            let img = document.getElementById("img");
+            img.onmousedown = function(event){
+                let disX = event.clientX - this.offsetLeft;
+                // console.log(disX);
+                let disY = event.clientY - this.offsetTop;
+
+                img.onmousemove = function(event){
+                    let left = event.clientX - disX;
+                    let top = event.clientY - disY;
+
+                    this.style.left = left + "px";
+                    this.style.top = top + "px";
+                }
+
+                img.onmouseup = function(){
+                    img.onmouseup = img.onmousemove = null;
+                }
+            }
+        </script>
+    </body>
+</html>

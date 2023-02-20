@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>简易计时器项目</title>
+    <style>
+        #d1{
+            width: 200px;
+            height: 200px;
+            color: white;
+            font-size: 100px;
+            background-color: green;
+            text-align: center;
+            line-height: 200px;
+        }
+    </style>
+</head>
+<body>
+    <div id="d1">0</div>
+</body>
+
+<script>
+
+    let d1 = document.getElementById("d1");
+
+    let n = 0;
+    setInterval(function(){
+        d1.innerHTML = n++;
+    }, 1000);
+</script>
+</html>

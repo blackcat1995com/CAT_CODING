@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+		<meta charset="utf-8" />
+		<style>
+			/* 绝对定位，父级元素必须有定位，否则默认父级元素是浏览器 */
+			#d1{
+				width: 100px;
+				height: 100px;
+				background-color: skyblue;
+				margin: 50px;
+				position: relative;
+			}
+
+			#d2{
+				width: 100px;
+				height: 100px;
+				background-color: pink;
+				position: absolute;
+				left: 10px;
+				top: 10px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="d1">
+			<div id="d2"></div>
+		</div>
+	</body>
+</html>
+
+
+
+
+
+
+
