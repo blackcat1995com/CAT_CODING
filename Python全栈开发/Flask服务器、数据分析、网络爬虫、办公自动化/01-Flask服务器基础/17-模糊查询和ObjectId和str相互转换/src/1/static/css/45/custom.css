@@ -1,0 +1,5 @@
+#resultBox dt a img{width:150px;height:145px;}
+#resultBox dd a{height: 25px;overflow: hidden;line-height: 25px;}
+#resultBox dd .author{height: 70px;overflow: hidden;margin-top:-5px;margin-bottom: 5px;text-overflow: ellipsis;}
+#resultBox dd .publisher{color:red;text-align:left;margin-left:5px;}
+

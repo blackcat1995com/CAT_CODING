@@ -1,0 +1,59 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+body {
+    background: url(../images/bg1.png) no-repeat;
+    background-size: 100%;
+}
+.signs {
+    width: 190px;
+    margin: 20px auto;
+}
+.signs .sign{
+    background: url(../images/0.png) no-repeat;
+    background-size: 170px;
+    width: 170px;
+    height: 190px;
+}
+#calendar table.year {
+    margin: 0 auto;
+}
+table.month {
+    margin: 20px;
+}
+table {
+    text-align: center;
+}
+#calendar table.year tbody tr th.year {
+    font-size: 30px;
+    font-weight:bold;
+}
+#calendar table.year tbody tr td table.month tbody tr th.month {
+    display: block;
+    margin: 0 auto 20px;
+}
+#calendar table.year tbody tr td table.month tbody tr th {
+    display: inline-block;
+    width: 48px;
+}
+#calendar table.year tbody tr td table.month tbody tr th.sat {
+    color: red;
+}
+#calendar table.year tbody tr td table.month tbody tr th.sun {
+    color: red;
+}
+#calendar table.year tbody tr td table.month tbody tr td {
+    display: inline-block;
+    width: 48px;
+}
+#calendar table.year tbody tr td table.month tbody tr td.sat {
+    color: red;
+}
+#calendar table.year tbody tr td table.month tbody tr td.sun {
+    color: red;
+}
+#calendar table.year tbody tr td {
+    display: inline-block;
+    vertical-align: top;
+}

@@ -1,0 +1,5 @@
+*{margin:0;padding:0;}
+html,body{width:100%;height:100%;overflow: hidden;}
+html{background: #5B5C5F;}
+#radar{width:800px;height:600px;margin:auto;margin-top:100px;}
+select{background: #5B5C5F;width:300px;height:40px;position:absolute;top:15px;left:50%;margin-left:-150px;z-index: 5;color:white;}

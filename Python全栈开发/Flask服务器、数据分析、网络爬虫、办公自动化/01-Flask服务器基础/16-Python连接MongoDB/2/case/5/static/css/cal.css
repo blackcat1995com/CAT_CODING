@@ -1,0 +1,20 @@
+.today-board{border:1px solid red;width:100px;height:100px;/*position:absolute;top:40px;right:-122px;*/float:left;}
+.mh-calendar{width:665px;}
+#mohe-rili{width:665px;}
+#mohe-rili .mh-rili-widget .mh-cal-main .mh-col-2{width:130px;float:left;}
+#mohe-rili .mh-rili-wap .mh-rili-only{width:665px;}
+#mohe-rili .mh-rili-widget{width:665px;}
+#mohe-rili .mh-rili-wap {overflow: visible;}
+#mohe-rili .mh-rili-widget .mh-cal-main .today-board{
+  width:130px;
+  background-color: #fff;
+    height: 383px;
+    border: 1px solid #d2d2d2;
+    border-left: none;
+}
+#mohe-rili .mh-rili-widget .mh-cal-main .today-board .mh-date{font-size: 12px;    line-height: 18px;text-align: -webkit-match-parent;font-family: arial;color: #333;}
+.gclearfix li{text-align: center;}
+#mohe-rili .mh-rili-widget .mh-almanac-extra{height:160px;}
+#mohe-rili .mh-rili-widget .mh-cal-main .today-board .mh-date{margin-left:26px;}
+#main{width:665px;}
+html,body{background: skyblue;}

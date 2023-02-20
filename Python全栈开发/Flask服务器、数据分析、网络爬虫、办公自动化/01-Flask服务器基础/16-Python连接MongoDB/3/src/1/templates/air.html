@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			* {
+				margin: 0px;
+				padding: 0px;
+			}
+			#menu {
+				background-color: #eee;
+				width: 600px;
+				height: 40px;
+				margin: auto;
+			}
+			#map_1 {
+				margin: auto;
+			}
+			ul {
+				list-style: none;
+			}
+			ul li {
+				float: left;
+				line-height: 40px;
+				text-align: center;
+				position: relative;
+			}
+			a {
+				text-decoration: none;
+				color: #000;
+				display: block;
+				width: 150px;
+			}
+			a:hover {
+				color: #FFF;
+				background-color: #666;
+			}
+			ul li ul li {
+				float: none;
+				border-left: none;
+				margin-top: 2px;
+				background-color: #eee;
+			}
+			ul li ul {
+				display: none;
+				width: 90px;
+				position: absolute;
+			}
+			ul li:hover ul {
+				display: block;
+			}
+		</style>
+
+	</head>
+	<body>
+		<div id="menu">
+			<ul>
+				<li>
+					<a>环境等级</a>
+				<li>
+					<a href="#" id="PM10">PM10>85</a>
+				</li>
+				<li>
+					<a  href="#" id="PM25">PM25>75</a>
+				</li>
+				<li>
+					<a  href="#" id="O3">260&ltO3<320</a>
+				</li>
+			</ul>
+		</div>
+		<div id="map_1" style="height: 600px;width: 1000px;"></div>
+	</body>
+	<script type="text/javascript" src="/static/js/echarts.min.js"></script>
+	<script type="text/javascript" src="/static/js/china.js"></script>
+	<script type="text/javascript" src="/static/js/jquery/jquery.min.js"></script>
+	<script type="text/javascript" src="/static/js/area_echarts.js"></script>
+</html>
+

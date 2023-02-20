@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>小米应用商店</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/43/project.css">
+</head>
+<body>
+<div id="father">
+    <img src="/static/images/43/apps/mi.png"/>
+    <div id="great" class="appListWrap">
+
+        <ul class="appList">
+            {% for good in quality_goods%}
+                <li>
+                    <img class="appIcon" src="/static/images/43/apps/{{good['icon']}}">
+                    <h5>{{good["appName"][:6]}}...</h5>
+                    <p>{{good["category"]}}</p>
+                </li>
+            {% endfor %}
+        </ul>
+
+    </div>
+    <div id="hot" class="appListWrap">
+        <ul class="appList">
+            {% for hot in hots%}
+                <li>
+                    <img class="appIcon" src="/static/images/43/apps/{{hot['icon']}}">
+                    <h5>{{hot["appName"][:6]}}...</h5>
+                    <p>{{hot["category"]}}</p>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+</body>
+</html>

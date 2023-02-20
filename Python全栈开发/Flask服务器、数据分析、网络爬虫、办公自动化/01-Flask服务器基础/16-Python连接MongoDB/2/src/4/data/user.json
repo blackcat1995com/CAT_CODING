@@ -1,0 +1,23 @@
+[
+  {
+    "_id": "5d341b66b2be26785b35046d",
+    "username": "xiaotong",
+    "password": "123456",
+    "head": "1.jpg",
+    "coins": 8888
+  },
+  {
+    "_id": "5d341b66b2be26785b35046e",
+    "username": "xiaomei",
+    "password": "000000",
+    "head": "3.jpg",
+    "coins": 0
+  },
+  {
+    "_id": "5d341b66b2be26785b35046f",
+    "username": "xiaoming",
+    "password": "888888",
+    "head": "2.jpg",
+    "coins": 0
+  }
+]

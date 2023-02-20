@@ -1,0 +1,859 @@
+{
+  "RECORDS": [
+    {
+      "area": "中国",
+      "avgPrice": 36,
+      "boxOffice": 567927,
+      "name": "战狼2",
+      "releaseTime": "2017-07-27",
+      "showCount": 4159272,
+      "type": "动作"
+    },
+    {
+      "area": "中国",
+      "avgPrice": 45,
+      "boxOffice": 465563,
+      "name": "流浪地球",
+      "releaseTime": "2019-02-05",
+      "showCount": 3595177,
+      "type": "科幻"
+    },
+    {
+      "area": "美国",
+      "avgPrice": 49,
+      "boxOffice": 423759,
+      "name": "复仇者联盟4：终局之战",
+      "releaseTime": "2019-04-24",
+      "showCount": 3758788,
+      "type": "动作"
+    },
+    {
+      "area": "中国/中国香港",
+      "avgPrice": 39,
+      "boxOffice": 365078,
+      "name": "红海行动",
+      "releaseTime": "2018-02-16",
+      "showCount": 2815760,
+      "type": "动作"
+    },
+    {
+      "area": "中国",
+      "avgPrice": 39,
+      "boxOffice": 339769,
+      "name": "唐人街探案2",
+      "releaseTime": "2018-02-16",
+      "showCount": 2275225,
+      "type": "喜剧"
+    },
+    {
+      "area": "中国/中国香港",
+      "avgPrice": 37,
+      "boxOffice": 339211,
+      "name": "美人鱼",
+      "releaseTime": "2016-02-08",
+      "showCount": 2120078,
+      "type": "喜剧"
+    },
+    {
+      "area": "中国",
+      "avgPrice": 35,
+      "boxOffice": 309996,
+      "name": "我不是药神",
+      "releaseTime": "2018-07-05",
+      "showCount": 3357532,
+      "type": "剧情"
+    },
+    {
+      "area": "美国",
+      "avgPrice": 37,
+      "boxOffice": 267096,
+      "name": "速度与激情8",
+      "releaseTime": "2017-04-14",
+      "showCount": 2424872,
+      "type": "动作"
+    },
+    {
+      "area": "中国",
+      "avgPrice": 35,
+      "boxOffice": 254757,
+      "name": "西虹市首富",
+      "releaseTime": "2018-07-27",
+      "showCount": 2594770,
+      "type": "喜剧"
+    },
+    {
+      "area": "中国香港/中国",
+      "avgPrice": 37,
+      "boxOffice": 244002,
+      "name": "捉妖记",
+      "releaseTime": "2015-07-16",
+      "showCount": 1576167,
+      "type": "奇幻"
+    },
+    {
+      "area": "美国/日本",
+      "avgPrice": 39,
+      "boxOffice": 242659,
+      "name": "速度与激情7",
+      "releaseTime": "2015-04-12",
+      "showCount": 1479789,
+      "type": "动作"
+    },
+    {
+      "area": "美国",
+      "avgPrice": 38,
+      "boxOffice": 239053,
+      "name": "复仇者联盟3：无限战争",
+      "releaseTime": "2018-05-11",
+      "showCount": 3232932,
+      "type": "动作"
+    },
+    {
+      "area": "中国香港/中国",
+      "avgPrice": 38,
+      "boxOffice": 223708,
+      "name": "捉妖记2",
+      "releaseTime": "2018-02-16",
+      "showCount": 1321814,
+      "type": "喜剧"
+    },
+    {
+      "area": "中国",
+      "avgPrice": 42,
+      "boxOffice": 220269,
+      "name": "疯狂的外星人",
+      "releaseTime": "2019-02-05",
+      "showCount": 1750475,
+      "type": "喜剧"
+    },
+    {
+      "area": "中国",
+      "avgPrice": 33,
+      "boxOffice": 220175,
+      "name": "羞羞的铁拳",
+      "releaseTime": "2017-09-30",
+      "showCount": 2605628,
+      "type": "喜剧"
+    },
+    {
+      "area": "美国",
+      "avgPrice": 36,
+      "boxOffice": 201251,
+      "name": "海王",
+      "releaseTime": "2018-12-07",
+      "showCount": 3153812,
+      "type": "动作"
+    },
+    {
+      "area": "美国/中国",
+      "avgPrice": 42,
+      "boxOffice": 197752,
+      "name": "变形金刚4：绝迹重生",
+      "releaseTime": "2014-06-27",
+      "showCount": 957235,
+      "type": "科幻"
+    },
+    {
+      "area": "中国",
+      "avgPrice": 35,
+      "boxOffice": 194174,
+      "name": "前任3：再见前任",
+      "releaseTime": "2017-12-29",
+      "showCount": 1938237,
+      "type": "喜剧"
+    },
+    {
+      "area": "美国",
+      "avgPrice": 36,
+      "boxOffice": 187068,
+      "name": "毒液：致命守护者",
+      "releaseTime": "2018-11-09",
+      "showCount": 3118922,
+      "type": "动作"
+    },
+    {
+      "area": "印度/中国",
+      "avgPrice": 38,
+      "boxOffice": 175259,
+      "name": "功夫瑜伽",
+      "releaseTime": "2017-01-28",
+      "showCount": 1377322,
+      "type": "喜剧"
+    },
+    {
+      "area": "中国",
+      "avgPrice": 42,
+      "boxOffice": 171755,
+      "name": "飞驰人生",
+      "releaseTime": "2019-02-05",
+      "showCount": 1647681,
+      "type": "喜剧"
+    },
+    {
+      "area": "美国",
+      "avgPrice": 36,
+      "boxOffice": 169588,
+      "name": "侏罗纪世界2",
+      "releaseTime": "2018-06-15",
+      "showCount": 2485633,
+      "type": "动作"
+    },
+    {
+      "area": "中国香港/中国",
+      "avgPrice": 36,
+      "boxOffice": 168274,
+      "name": "寻龙诀",
+      "releaseTime": "2015-12-18",
+      "showCount": 1155974,
+      "type": "动作"
+    },
+    {
+      "area": "中国香港/中国",
+      "avgPrice": 39,
+      "boxOffice": 165593,
+      "name": "西游伏妖篇",
+      "releaseTime": "2017-01-28",
+      "showCount": 1172884,
+      "type": "奇幻"
+    },
+    {
+      "area": "中国",
+      "avgPrice": 33,
+      "boxOffice": 161410,
+      "name": "港囧",
+      "releaseTime": "2015-09-25",
+      "showCount": 1223969,
+      "type": "喜剧"
+    },
+    {
+      "area": "美国",
+      "avgPrice": 37,
+      "boxOffice": 155124,
+      "name": "变形金刚5：最后的骑士",
+      "releaseTime": "2017-06-23",
+      "showCount": 1842531,
+      "type": "动作"
+    },
+    {
+      "area": "美国",
+      "avgPrice": 34,
+      "boxOffice": 153036,
+      "name": "疯狂动物城",
+      "releaseTime": "2016-03-04",
+      "showCount": 1581032,
+      "type": "动画"
+    },
+    {
+      "area": "美国",
+      "avgPrice": 37,
+      "boxOffice": 147230,
+      "name": "魔兽",
+      "releaseTime": "2016-06-08",
+      "showCount": 1590152,
+      "type": "动作"
+    },
+    {
+      "area": "美国",
+      "avgPrice": 40,
+      "boxOffice": 146439,
+      "name": "复仇者联盟2：奥创纪元",
+      "releaseTime": "2015-05-12",
+      "showCount": 1283089,
+      "type": "科幻"
+    },
+    {
+      "area": "中国",
+      "avgPrice": 32,
+      "boxOffice": 144161,
+      "name": "夏洛特烦恼",
+      "releaseTime": "2015-09-30",
+      "showCount": 1325247,
+      "type": "喜剧"
+    },
+    {
+      "area": "中国",
+      "avgPrice": 34,
+      "boxOffice": 142258,
+      "name": "芳华",
+      "releaseTime": "2017-12-15",
+      "showCount": 1690642,
+      "type": "战争"
+    },
+    {
+      "area": "美国",
+      "avgPrice": 38,
+      "boxOffice": 142073,
+      "name": "侏罗纪世界",
+      "releaseTime": "2015-06-10",
+      "showCount": 1133977,
+      "type": "动作"
+    },
+    {
+      "area": "美国",
+      "avgPrice": 36,
+      "boxOffice": 139666,
+      "name": "头号玩家",
+      "releaseTime": "2018-03-30",
+      "showCount": 2188495,
+      "type": "科幻"
+    },
+    {
+      "area": "中国",
+      "avgPrice": 34,
+      "boxOffice": 136152,
+      "name": "后来的我们",
+      "releaseTime": "2018-04-28",
+      "showCount": 1928383,
+      "type": "爱情"
+    },
+    {
+      "area": "中国",
+      "avgPrice": 35,
+      "boxOffice": 135505,
+      "name": "一出好戏",
+      "releaseTime": "2018-08-10",
+      "showCount": 1530835,
+      "type": "喜剧"
+    },
+    {
+      "area": "美国",
+      "avgPrice": 50,
+      "boxOffice": 133986,
+      "name": "阿凡达",
+      "releaseTime": "2010-01-04",
+      "showCount": 374343,
+      "type": "科幻/动作"
+    },
+    {
+      "area": "美国",
+      "avgPrice": 36,
+      "boxOffice": 132831,
+      "name": "蜘蛛侠：英雄远征",
+      "releaseTime": "2019-06-28",
+      "showCount": 2047148,
+      "type": "喜剧"
+    },
+    {
+      "area": "印度",
+      "avgPrice": 30,
+      "boxOffice": 129918,
+      "name": "摔跤吧！爸爸",
+      "releaseTime": "2017-05-05",
+      "showCount": 1947365,
+      "type": "喜剧"
+    },
+    {
+      "area": "中国/中国香港",
+      "avgPrice": 36,
+      "boxOffice": 127377,
+      "name": "无双",
+      "releaseTime": "2018-09-30",
+      "showCount": 2454635,
+      "type": "动作"
+    },
+    {
+      "area": "中国",
+      "avgPrice": 32,
+      "boxOffice": 127194,
+      "name": "人再囧途之泰囧",
+      "releaseTime": "2012-12-12",
+      "showCount": 869981,
+      "type": "喜剧"
+    },
+    {
+      "area": "中国/中国香港",
+      "avgPrice": 40,
+      "boxOffice": 124699,
+      "name": "西游降魔篇",
+      "releaseTime": "2013-02-10",
+      "showCount": 764900,
+      "type": "奇幻"
+    },
+    {
+      "area": "美国",
+      "avgPrice": 35,
+      "boxOffice": 124635,
+      "name": "美国队长3：英雄内战",
+      "releaseTime": "2016-05-06",
+      "showCount": 1420597,
+      "type": "动作"
+    },
+    {
+      "area": "美国",
+      "avgPrice": 37,
+      "boxOffice": 124522,
+      "name": "碟中谍6：全面瓦解",
+      "releaseTime": "2018-08-31",
+      "showCount": 2283747,
+      "type": "动作"
+    },
+    {
+      "area": "美国",
+      "avgPrice": 34,
+      "boxOffice": 121186,
+      "name": "寻梦环游记",
+      "releaseTime": "2017-11-24",
+      "showCount": 2009997,
+      "type": "动画"
+    },
+    {
+      "area": "中国",
+      "avgPrice": 37,
+      "boxOffice": 120101,
+      "name": "西游记之孙悟空三打白骨精",
+      "releaseTime": "2016-02-08",
+      "showCount": 918639,
+      "type": "动作"
+    },
+    {
+      "area": "中国香港/中国",
+      "avgPrice": 30,
+      "boxOffice": 118818,
+      "name": "湄公河行动",
+      "releaseTime": "2016-09-30",
+      "showCount": 1590822,
+      "type": "动作"
+    },
+    {
+      "area": "美国",
+      "avgPrice": 36,
+      "boxOffice": 117991,
+      "name": "加勒比海盗5：死无对证",
+      "releaseTime": "2017-05-26",
+      "showCount": 1502700,
+      "type": "动作"
+    },
+    {
+      "area": "美国/中国",
+      "avgPrice": 35,
+      "boxOffice": 117457,
+      "name": "长城",
+      "releaseTime": "2016-12-16",
+      "showCount": 1567739,
+      "type": "奇幻"
+    },
+    {
+      "area": "中国",
+      "avgPrice": 34,
+      "boxOffice": 116934,
+      "name": "心花路放",
+      "releaseTime": "2014-09-30",
+      "showCount": 953002,
+      "type": "喜剧"
+    },
+    {
+      "area": "中国",
+      "avgPrice": 33,
+      "boxOffice": 116276,
+      "name": "煎饼侠",
+      "releaseTime": "2015-07-17",
+      "showCount": 907863,
+      "type": "喜剧"
+    },
+    {
+      "area": "美国",
+      "avgPrice": 35,
+      "boxOffice": 116050,
+      "name": "金刚：骷髅岛",
+      "releaseTime": "2017-03-24",
+      "showCount": 1613113,
+      "type": "动作"
+    },
+    {
+      "area": "美国",
+      "avgPrice": 36,
+      "boxOffice": 114779,
+      "name": "大黄蜂",
+      "releaseTime": "2019-01-04",
+      "showCount": 2822352,
+      "type": "动作"
+    },
+    {
+      "area": "美国",
+      "avgPrice": 36,
+      "boxOffice": 112741,
+      "name": "极限特工：终极回归",
+      "releaseTime": "2017-02-10",
+      "showCount": 1374210,
+      "type": "动作"
+    },
+    {
+      "area": "中国/中国香港",
+      "avgPrice": 36,
+      "boxOffice": 111821,
+      "name": "澳门风云3",
+      "releaseTime": "2016-02-08",
+      "showCount": 873450,
+      "type": "喜剧"
+    },
+    {
+      "area": "美国/德国",
+      "avgPrice": 35,
+      "boxOffice": 111182,
+      "name": "生化危机：终章",
+      "releaseTime": "2017-02-24",
+      "showCount": 1565225,
+      "type": "科幻"
+    },
+    {
+      "area": "美国",
+      "avgPrice": 42,
+      "boxOffice": 107157,
+      "name": "变形金刚3",
+      "releaseTime": "2011-07-21",
+      "showCount": 476536,
+      "type": "科幻"
+    },
+    {
+      "area": "美国",
+      "avgPrice": 38,
+      "boxOffice": 105178,
+      "name": "巨齿鲨",
+      "releaseTime": "2018-08-10",
+      "showCount": 1245423,
+      "type": "动作"
+    },
+    {
+      "area": "中国",
+      "avgPrice": 36,
+      "boxOffice": 104853,
+      "name": "乘风破浪",
+      "releaseTime": "2017-01-28",
+      "showCount": 1060948,
+      "type": "剧情"
+    },
+    {
+      "area": "中国/中国香港",
+      "avgPrice": 42,
+      "boxOffice": 104550,
+      "name": "西游记之大闹天宫",
+      "releaseTime": "2014-01-31",
+      "showCount": 629833,
+      "type": "魔幻"
+    },
+    {
+      "area": "美国",
+      "avgPrice": 34,
+      "boxOffice": 103781,
+      "name": "神偷奶爸3",
+      "releaseTime": "2017-07-07",
+      "showCount": 1498312,
+      "type": "动画"
+    },
+    {
+      "area": "美国",
+      "avgPrice": 37,
+      "boxOffice": 103333,
+      "name": "惊奇队长",
+      "releaseTime": "2019-03-08",
+      "showCount": 1978009,
+      "type": "动作"
+    },
+    {
+      "area": "中国",
+      "avgPrice": 35,
+      "boxOffice": 100453,
+      "name": "盗墓笔记",
+      "releaseTime": "2016-08-05",
+      "showCount": 1039630,
+      "type": "奇幻"
+    },
+    {
+      "area": "美国",
+      "avgPrice": 35,
+      "boxOffice": 100395,
+      "name": "狂暴巨兽",
+      "releaseTime": "2018-04-13",
+      "showCount": 2140901,
+      "type": "动作"
+    },
+    {
+      "area": "中国/美国",
+      "avgPrice": 36,
+      "boxOffice": 100200,
+      "name": "功夫熊猫3",
+      "releaseTime": "2016-01-29",
+      "showCount": 1135103,
+      "type": "动画"
+    },
+    {
+      "area": "美国",
+      "avgPrice": 34,
+      "boxOffice": 97939,
+      "name": "奇幻森林",
+      "releaseTime": "2016-04-15",
+      "showCount": 1211401,
+      "type": "奇幻"
+    },
+    {
+      "area": "中国香港/中国",
+      "avgPrice": 39,
+      "boxOffice": 97486,
+      "name": "澳门风云2",
+      "releaseTime": "2015-02-19",
+      "showCount": 681336,
+      "type": "喜剧"
+    },
+    {
+      "area": "中国香港/中国",
+      "avgPrice": 36,
+      "boxOffice": 96906,
+      "name": "扫毒2：天地对决",
+      "releaseTime": "2019-07-05",
+      "showCount": 1357548,
+      "type": "剧情"
+    },
+    {
+      "area": "中国",
+      "avgPrice": 35,
+      "boxOffice": 95657,
+      "name": "西游记之大圣归来",
+      "releaseTime": "2015-07-10",
+      "showCount": 803106,
+      "type": "动画"
+    },
+    {
+      "area": "中国台湾",
+      "avgPrice": 31,
+      "boxOffice": 95388,
+      "name": "比悲伤更悲伤的故事",
+      "releaseTime": "2019-03-14",
+      "showCount": 2109862,
+      "type": "爱情"
+    },
+    {
+      "area": "美国",
+      "avgPrice": 45,
+      "boxOffice": 94621,
+      "name": "泰坦尼克号3D",
+      "releaseTime": "2012-04-10",
+      "showCount": 391747,
+      "type": "爱情"
+    },
+    {
+      "area": "美国",
+      "avgPrice": 36,
+      "boxOffice": 93419,
+      "name": "哥斯拉2：怪兽之王",
+      "releaseTime": "2019-05-31",
+      "showCount": 1754868,
+      "type": "科幻"
+    },
+    {
+      "area": "中国",
+      "avgPrice": 31,
+      "boxOffice": 90280,
+      "name": "老炮儿",
+      "releaseTime": "2015-12-24",
+      "showCount": 759529,
+      "type": "剧情"
+    },
+    {
+      "area": "中国",
+      "avgPrice": 33,
+      "boxOffice": 89988,
+      "name": "超时空同居",
+      "releaseTime": "2018-05-18",
+      "showCount": 2231284,
+      "type": "奇幻"
+    },
+    {
+      "area": "美国/加拿大/阿根廷",
+      "avgPrice": 38,
+      "boxOffice": 89524,
+      "name": "阿丽塔：战斗天使",
+      "releaseTime": "2019-02-22",
+      "showCount": 1735219,
+      "type": "动作"
+    },
+    {
+      "area": "美国/中国香港/中国",
+      "avgPrice": 35,
+      "boxOffice": 88950,
+      "name": "绝地逃亡",
+      "releaseTime": "2016-07-21",
+      "showCount": 1028333,
+      "type": "动作"
+    },
+    {
+      "area": "中国/中国香港",
+      "avgPrice": 41,
+      "boxOffice": 88418,
+      "name": "智取威虎山",
+      "releaseTime": "2014-12-23",
+      "showCount": 771945,
+      "type": "动作"
+    },
+    {
+      "area": "中国/中国香港",
+      "avgPrice": 40,
+      "boxOffice": 88118,
+      "name": "十二生肖",
+      "releaseTime": "2012-12-20",
+      "showCount": 587307,
+      "type": "动作"
+    },
+    {
+      "area": "美国/中国",
+      "avgPrice": 33,
+      "boxOffice": 86977,
+      "name": "碟中谍5：神秘国度",
+      "releaseTime": "2015-09-08",
+      "showCount": 1016519,
+      "type": "动作"
+    },
+    {
+      "area": "美国",
+      "avgPrice": 37,
+      "boxOffice": 82558,
+      "name": "星球大战：原力觉醒",
+      "releaseTime": "2016-01-09",
+      "showCount": 928527,
+      "type": "科幻"
+    },
+    {
+      "area": "中国",
+      "avgPrice": 32,
+      "boxOffice": 82442,
+      "name": "唐人街探案",
+      "releaseTime": "2015-12-31",
+      "showCount": 777740,
+      "type": "喜剧"
+    },
+    {
+      "area": "美国",
+      "avgPrice": 34,
+      "boxOffice": 80292,
+      "name": "X战警：天启",
+      "releaseTime": "2016-06-03",
+      "showCount": 1000378,
+      "type": "动作"
+    },
+    {
+      "area": "中国",
+      "avgPrice": 35,
+      "boxOffice": 79453,
+      "name": "无名之辈",
+      "releaseTime": "2018-11-16",
+      "showCount": 1936560,
+      "type": "剧情"
+    },
+    {
+      "area": "中国/中国香港",
+      "avgPrice": 34,
+      "boxOffice": 78680,
+      "name": "北京遇上西雅图之不二情书",
+      "releaseTime": "2016-04-29",
+      "showCount": 965394,
+      "type": "爱情"
+    },
+    {
+      "area": "美国",
+      "avgPrice": 35,
+      "boxOffice": 77414,
+      "name": "蜘蛛侠：英雄归来",
+      "releaseTime": "2017-09-08",
+      "showCount": 1413491,
+      "type": "动作"
+    },
+    {
+      "area": "中国/中国香港",
+      "avgPrice": 39,
+      "boxOffice": 77031,
+      "name": "叶问3",
+      "releaseTime": "2016-03-04",
+      "showCount": 863343,
+      "type": "动作"
+    },
+    {
+      "area": "美国/新西兰",
+      "avgPrice": 40,
+      "boxOffice": 76650,
+      "name": "霍比特人3：五军之战",
+      "releaseTime": "2015-01-23",
+      "showCount": 644277,
+      "type": "奇幻"
+    },
+    {
+      "area": "中国",
+      "avgPrice": 36,
+      "boxOffice": 75793,
+      "name": "大闹天竺",
+      "releaseTime": "2017-01-28",
+      "showCount": 679475,
+      "type": "喜剧"
+    },
+    {
+      "area": "美国/英国",
+      "avgPrice": 36,
+      "boxOffice": 75533,
+      "name": "星际穿越",
+      "releaseTime": "2014-11-12",
+      "showCount": 612815,
+      "type": "科幻"
+    },
+    {
+      "area": "美国/中国",
+      "avgPrice": 42,
+      "boxOffice": 75487,
+      "name": "钢铁侠3",
+      "releaseTime": "2013-05-01",
+      "showCount": 539200,
+      "type": "科幻"
+    },
+    {
+      "area": "中国",
+      "avgPrice": 31,
+      "boxOffice": 75430,
+      "name": "无问西东",
+      "releaseTime": "2018-01-12",
+      "showCount": 1317649,
+      "type": "剧情"
+    },
+    {
+      "area": "美国",
+      "avgPrice": 35,
+      "boxOffice": 75170,
+      "name": "奇异博士",
+      "releaseTime": "2016-11-04",
+      "showCount": 1194367,
+      "type": "奇幻"
+    },
+    {
+      "area": "中国",
+      "avgPrice": 41,
+      "boxOffice": 74418,
+      "name": "天将雄师",
+      "releaseTime": "2015-02-19",
+      "showCount": 482517,
+      "type": "动作"
+    },
+    {
+      "area": "美国",
+      "avgPrice": 35,
+      "boxOffice": 73978,
+      "name": "猩球崛起3：终极之战",
+      "releaseTime": "2017-09-15",
+      "showCount": 1332968,
+      "type": "动作"
+    },
+    {
+      "area": "美国",
+      "avgPrice": 32,
+      "boxOffice": 73163,
+      "name": "金刚狼3：殊死一战",
+      "releaseTime": "2017-03-03",
+      "showCount": 1424137,
+      "type": "动作"
+    },
+    {
+      "area": "中国",
+      "avgPrice": 40,
+      "boxOffice": 72738,
+      "name": "西游记女儿国",
+      "releaseTime": "2018-02-16",
+      "showCount": 553709,
+      "type": "喜剧"
+    }
+  ]
+}
