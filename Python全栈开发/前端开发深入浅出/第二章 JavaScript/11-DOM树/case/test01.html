@@ -12,13 +12,13 @@
         <h4>第二个child节点</h4>
         <div>第三个child节点</div>
     </div>
-    
+
     <script>
         let box = document.getElementById("box");
         let boxChild = box.childNodes;
         console.log(boxChild);
 
-        for(let i = 1;  i < boxChild.length; i += 2)
+        for(let i = 1; i < boxChild.length; i += 2)
             console.log(boxChild[i].nodeName);
 
         let newnode = document.createElement("p");
@@ -26,6 +26,7 @@
         box.appendChild(newnode);
 
         console.log(boxChild);
+        
     </script>
 </body>
 </html>

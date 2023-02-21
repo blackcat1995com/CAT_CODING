@@ -35,12 +35,13 @@
 			// 点击按钮，在ul标记子节点的第一位插入包含内容“我的世界”，文字颜色为红色的h4节点
 			let btn = document.getElementById("button");
 			let game = document.getElementById("game");
-			btn.onclick = function() {
-				let newGame = document.createElement("h4");
-				newGame.innerHTML = "我的世界";
-				newGame.style.color = "red";
-				newGame.style.paddingLeft = "40px";
-				game.insertBefore(newGame, game.firstChild);
+
+			btn.onclick = function(){
+				let newnode = document.createElement("h4");
+				newnode.innerHTML = "我的世界";
+				newnode.style.color = "red";
+				newnode.style.paddingLeft = "40px";
+				game.insertBefore(newnode, game.firstChild);
 			}
 		</script>
 	</body>
