@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="box">第1行</div>
+    <div class="box">第2行</div>
+    <div class="box">第3行</div>
+
+    <script>
+        let box = document.querySelector(".box");
+        box.style.color = "red";
+        console.log(box);
+
+        let boxes = document.querySelectorAll(".box");
+        console.log(boxes);
+
+        for(let i = 0; i < boxes.length; i++)
+            console.log(boxes[i]);
+    </script>
+</body>
+</html>
