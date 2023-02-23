@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="29">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>2</ID>
+      <Description>"阳光基址"</Description>
+      <LastState Value="7325" RealAddress="166BF458"/>
+      <VariableType>4 Bytes</VariableType>
+      <Address>6A9EC0</Address>
+      <Offsets>
+        <Offset>5560</Offset>
+        <Offset>768</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>3</ID>
+      <Description>"自动收集阳光"</Description>
+      <LastState Value="1" RealAddress="1678E718"/>
+      <VariableType>4 Bytes</VariableType>
+      <Address>6A9EC0</Address>
+      <Offsets>
+        <Offset>50</Offset>
+        <Offset>e4</Offset>
+        <Offset>768</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>6</ID>
+      <Description>"金币基址"</Description>
+      <LastState Value="9999" RealAddress="093DC998"/>
+      <VariableType>4 Bytes</VariableType>
+      <Address>6A9EC0</Address>
+      <Offsets>
+        <Offset>28</Offset>
+        <Offset>82c</Offset>
+      </Offsets>
+    </CheatEntry>
+  </CheatEntries>
+  <UserdefinedSymbols/>
+</CheatTable>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="29">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>0</ID>
+      <Description>"棋子数"</Description>
+      <VariableType>4 Bytes</VariableType>
+      <Address>00184DC0</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>4</ID>
+      <Description>"倒计时"</Description>
+      <VariableType>4 Bytes</VariableType>
+      <Address>00186AA8</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>5</ID>
+      <Description>"棋盘基址"</Description>
+      <VariableType>Byte</VariableType>
+      <Address>00199F5C</Address>
+    </CheatEntry>
+  </CheatEntries>
+  <UserdefinedSymbols/>
+</CheatTable>
