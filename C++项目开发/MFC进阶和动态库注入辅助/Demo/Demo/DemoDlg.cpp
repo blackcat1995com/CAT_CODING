@@ -52,6 +52,9 @@ END_MESSAGE_MAP()
 
 CDemoDlg::CDemoDlg(CWnd* pParent /*=nullptr*/)
 	: CDialogEx(IDD_DEMO_DIALOG, pParent)
+	, m_edit_a_value(0)
+	, m_edit_b_value(0)
+	, m_edit_c_value(0)
 {
 	m_hIcon = AfxGetApp()->LoadIcon(IDR_MAINFRAME);
 }
@@ -59,12 +62,27 @@ CDemoDlg::CDemoDlg(CWnd* pParent /*=nullptr*/)
 void CDemoDlg::DoDataExchange(CDataExchange* pDX)
 {
 	CDialogEx::DoDataExchange(pDX);
+	DDX_Text(pDX, IDC_EDIT_A, m_edit_a_value);
+	DDX_Text(pDX, IDC_EDIT_B, m_edit_b_value);
+	DDV_MinMaxInt(pDX, m_edit_b_value, 0, 100);
+	DDX_Text(pDX, IDC_EDIT_C, m_edit_c_value);
+	DDV_MinMaxInt(pDX, m_edit_c_value, 0, 100);
+	DDX_Control(pDX, IDC_EDIT_A, m_edit_a_control);
+	DDX_Control(pDX, IDC_EDIT_B, m_edit_b_control);
+	DDX_Control(pDX, IDC_EDIT_C, m_edit_c_control);
 }
 
 BEGIN_MESSAGE_MAP(CDemoDlg, CDialogEx)
 	ON_WM_SYSCOMMAND()
 	ON_WM_PAINT()
 	ON_WM_QUERYDRAGICON()
+	ON_BN_CLICKED(IDC_BUTTON_ADD1, &CDemoDlg::OnBnClickedButtonAdd1)
+	ON_BN_CLICKED(IDC_BUTTON_ADD2, &CDemoDlg::OnBnClickedButtonAdd2)
+	ON_BN_CLICKED(IDC_BUTTON_ADD3, &CDemoDlg::OnBnClickedButtonAdd3)
+	ON_BN_CLICKED(IDC_BUTTON_ADD4, &CDemoDlg::OnBnClickedButtonAdd4)
+	ON_BN_CLICKED(IDC_BUTTON_ADD5, &CDemoDlg::OnBnClickedButtonAdd5)
+	ON_BN_CLICKED(IDC_BUTTON_ADD6, &CDemoDlg::OnBnClickedButtonAdd6)
+	ON_BN_CLICKED(IDC_BUTTON7, &CDemoDlg::OnBnClickedButton7)
 END_MESSAGE_MAP()
 
 
@@ -153,3 +171,147 @@ HCURSOR CDemoDlg::OnQueryDragIcon()
 	return static_cast<HCURSOR>(m_hIcon);
 }
 
+
+
+const int N = 20;
+void CDemoDlg::OnBnClickedButtonAdd1()
+{
+	TCHAR str1[N], str2[N], str3[N];
+
+	GetDlgItem(IDC_EDIT_A)->GetWindowTextW(str1, N);
+	GetDlgItem(IDC_EDIT_B)->GetWindowTextW(str2, N);
+
+	int a = _ttoi(str1);
+	int b = _ttoi(str2);
+
+	int c = a + b;
+
+	_itow_s(c, str3, 16);
+
+	GetDlgItem(IDC_EDIT_C)->SetWindowTextW(str3);
+}
+
+
+void CDemoDlg::OnBnClickedButtonAdd2()
+{
+	/*TCHAR str1[N], str2[N], str3[N];
+
+	GetDlgItemText(IDC_EDIT_A, str1, N);
+	GetDlgItemText(IDC_EDIT_B, str2, N);*/
+
+	CString str1, str2;
+	GetDlgItemText(IDC_EDIT_A, str1);
+	GetDlgItemText(IDC_EDIT_B, str2);
+
+	TCHAR* chs1 = new TCHAR[N];
+	TCHAR* chs2 = new TCHAR[N];
+	TCHAR chs3[N];
+
+	chs1 = str1.GetBuffer(str1.GetLength());
+	chs2 = str2.GetBuffer(str2.GetLength());
+
+	int a = _ttoi(chs1);
+	int b = _ttoi(chs2);
+
+	int c = a + b;
+
+	_itow_s(c, chs3, 10);
+	
+	SetDlgItemText(IDC_EDIT_C, chs3);
+
+	str1.ReleaseBuffer(); 
+	str2.ReleaseBuffer();
+	
+
+	/*int a = _ttoi(str1);
+	int b = _ttoi(str2);
+
+	int c = a + b;
+
+	_itow_s(c, str3, 10);
+
+	SetDlgItemText(IDC_EDIT_C, str3);*/
+
+	/*TCHAR chs[N] = _T("Hello");
+	CString str;
+	str.Format(_T("%s"), chs);
+	OutputDebugString(str);*/
+}
+
+
+void CDemoDlg::OnBnClickedButtonAdd3()
+{
+	int a = GetDlgItemInt(IDC_EDIT_A);
+	int b = GetDlgItemInt(IDC_EDIT_B);
+
+	int c = a + b;
+
+	SetDlgItemInt(IDC_EDIT_C, c);
+}
+
+
+void CDemoDlg::OnBnClickedButtonAdd4()
+{
+	UpdateData(TRUE);
+
+	m_edit_c_value = m_edit_a_value + m_edit_b_value;
+
+	UpdateData(FALSE);
+}
+
+
+void CDemoDlg::OnBnClickedButtonAdd5()
+{
+	CString str1, str2;
+	m_edit_a_control.GetWindowTextW(str1);
+	m_edit_b_control.GetWindowTextW(str2);
+
+	// OutputDebugString(str1 + str2);
+
+	// Cstring 转 int
+	int a = _ttoi(str1);
+	int b = _ttoi(str2);
+
+	int c = a + b;
+
+	// int 转 CString
+	CString str3;
+	str3.Format(_T("%d"), c);
+	m_edit_c_control.SetWindowTextW(str3);
+}
+
+
+void CDemoDlg::OnBnClickedButtonAdd6()
+{
+	TCHAR chs1[N], chs2[N], chs3[N];
+
+	::SendMessage(GetDlgItem(IDC_EDIT_A)->m_hWnd, WM_GETTEXT, N, (LPARAM)chs1);
+	::SendMessage(GetDlgItem(IDC_EDIT_B)->m_hWnd, WM_GETTEXT, N, (LPARAM)chs2);
+
+	int a = _ttoi(chs1);
+	int b = _ttoi(chs2);
+
+	int c = a + b;
+
+	_itow_s(c, chs3, 10);
+
+	::SendMessage(GetDlgItem(IDC_EDIT_C)->m_hWnd, WM_SETTEXT, 0, (LPARAM)chs3);
+}
+
+
+void CDemoDlg::OnBnClickedButton7()
+{
+	TCHAR chs1[N], chs2[N], chs3[N];
+
+	SendDlgItemMessage(IDC_EDIT_A, WM_GETTEXT, N, (LPARAM)chs1);
+	SendDlgItemMessage(IDC_EDIT_B, WM_GETTEXT, N, (LPARAM)chs2);
+
+	int a = _ttoi(chs1);
+	int b = _ttoi(chs2);
+
+	int c = a + b;
+
+	_itow_s(c, chs3, 10);
+
+	SendDlgItemMessage(IDC_EDIT_C, WM_SETTEXT, 0, (LPARAM)chs3);
+}
