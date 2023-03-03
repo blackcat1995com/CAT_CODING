@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>黑猫编程</title>
+    <link rel="icon" href="/static/cat_logo.ico">
+    <link rel="stylesheet" href="/static/css/bootstrap-5.1.3-dist.min.css">
+    <script src="/static/js/jquery-3.6.3.min.js"></script>
+    <script src="/static/js/bootstrap-5.1.3-dist.min.js"></script>
+    <style>
+        video{
+            width: 600px;
+            height: 400px;
+        }
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+
+    <video src="/static/llk.mp4"></video>
+
+    <script>
+        let box = document.getElementById("box");
+
+        let $box = $(box);
+        
+        $box.css({'width':'200px', 'height':'200px', 'backgroundColor':'pink'});
+
+        $("video")[0].play();
+    </script>
+</body>
+</html>
