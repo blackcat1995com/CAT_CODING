@@ -14,6 +14,22 @@
 
 CDemoDlg* g_dlg;
 
+VOID CALLBACK TimerProc(HWND hwnd, UINT uMsg, UINT_PTR idEvent, DWORD dwTime) {
+	int minv, maxv;
+	g_dlg->m_progress.GetRange(minv, maxv);
+
+	int pos = g_dlg->m_progress.GetPos();
+	pos++;
+
+	if (pos > maxv) {
+		pos = 0;
+		::KillTimer(hwnd, 1002);
+		g_dlg->m_btn_start_progress.EnableWindow(TRUE);
+	}
+
+	g_dlg->m_progress.SetPos(pos);
+}
+
 // 用于应用程序“关于”菜单项的 CAboutDlg 对话框
 
 class CAboutDlg : public CDialogEx
@@ -32,6 +48,8 @@ public:
 // 实现
 protected:
 	DECLARE_MESSAGE_MAP()
+public:
+	afx_msg void OnNMCustomdrawSlider(NMHDR* pNMHDR, LRESULT* pResult);
 };
 
 CAboutDlg::CAboutDlg() : CDialogEx(IDD_ABOUTBOX)
@@ -44,6 +62,7 @@ void CAboutDlg::DoDataExchange(CDataExchange* pDX)
 }
 
 BEGIN_MESSAGE_MAP(CAboutDlg, CDialogEx)
+	ON_NOTIFY(NM_CUSTOMDRAW, IDC_SLIDER, &CAboutDlg::OnNMCustomdrawSlider)
 END_MESSAGE_MAP()
 
 
@@ -53,6 +72,7 @@ END_MESSAGE_MAP()
 
 CDemoDlg::CDemoDlg(CWnd* pParent /*=nullptr*/)
 	: CDialogEx(IDD_DEMO_DIALOG, pParent)
+	, m_static_show_slider_value(0)
 {
 	m_hIcon = AfxGetApp()->LoadIcon(IDR_MAINFRAME);
 }
@@ -60,15 +80,21 @@ CDemoDlg::CDemoDlg(CWnd* pParent /*=nullptr*/)
 void CDemoDlg::DoDataExchange(CDataExchange* pDX)
 {
 	CDialogEx::DoDataExchange(pDX);
-	DDX_Control(pDX, IDC_STATIC_PIC, m_pic);
+	DDX_Control(pDX, IDC_PROGRESS, m_progress);
+	DDX_Control(pDX, IDC_BUTN_Start_Progress, m_btn_start_progress);
+	DDX_Text(pDX, IDC_STATIC_Show_Slider, m_static_show_slider_value);
+	DDX_Control(pDX, IDC_SLIDER, m_slider);
 }
 
 BEGIN_MESSAGE_MAP(CDemoDlg, CDialogEx)
 	ON_WM_SYSCOMMAND()
 	ON_WM_PAINT()
 	ON_WM_QUERYDRAGICON()
-	ON_BN_CLICKED(IDC_BTN_LoadNewImg, &CDemoDlg::OnBnClickedBtnLoadnewimg)
-	ON_BN_CLICKED(IDC_BTN_LOAD_LOGO, &CDemoDlg::OnBnClickedBtnLoadLogo)
+	ON_BN_CLICKED(IDC_BTN_Start, &CDemoDlg::OnBnClickedBtnStart)
+	ON_BN_CLICKED(IDC_BTN_Stop, &CDemoDlg::OnBnClickedBtnStop)
+	ON_WM_TIMER()
+	ON_BN_CLICKED(IDC_BUTN_Start_Progress, &CDemoDlg::OnBnClickedButnStartProgress)
+	ON_NOTIFY(NM_CUSTOMDRAW, IDC_SLIDER, &CDemoDlg::OnNMCustomdrawSlider)
 END_MESSAGE_MAP()
 
 
@@ -105,6 +131,14 @@ BOOL CDemoDlg::OnInitDialog()
 
 	// TODO: 在此添加额外的初始化代码
 	g_dlg = this;
+	m_progress.SetRange(0, 100);
+	m_progress.SetPos(0);
+
+	m_slider.SetRange(0, 100);
+	m_slider.SetPos(30);
+
+	m_static_show_slider_value = 30;
+	UpdateData(FALSE);
 
 	return TRUE;  // 除非将焦点设置到控件，否则返回 TRUE
 }
@@ -147,26 +181,6 @@ void CDemoDlg::OnPaint()
 	}
 	else
 	{
-		CPaintDC dc(this);
-
-		// 1.创建第二缓冲区
-		CDC memDC;
-		memDC.CreateCompatibleDC(&dc);
-
-		CBitmap bmp;
-		bmp.LoadBitmapW(IDB_BITMAP_LOGO);
-
-		// 2.把位图放入第二缓冲区，并在画布上绘制内容
-		memDC.SelectObject(&bmp);
-		memDC.SetBkMode(TRANSPARENT);
-		memDC.TextOutW(0, 0, _T("我的logo"));
-
-		// 3.将第二缓冲区内容拷贝到第一缓冲区，立即显示在屏幕上
-		CRect rect;
-		GetClientRect(rect);
-
-		//dc.BitBlt(250, 680, 200, 100, &memDC, 0, 0, SRCCOPY);
-		dc.StretchBlt(250, 680, 200, 100, &memDC, 0, 0, 448, 194, SRCCOPY);
 		CDialogEx::OnPaint();
 	}
 }
@@ -180,32 +194,61 @@ HCURSOR CDemoDlg::OnQueryDragIcon()
 
 
 
-void CDemoDlg::OnBnClickedBtnLoadnewimg()
+void CDemoDlg::OnBnClickedBtnStart()
 {
-	HBITMAP hBmp = LoadBitmap(AfxGetInstanceHandle(), MAKEINTRESOURCE(IDB_BITMAP_FJ2));
-	m_pic.SetBitmap(hBmp);
+	SetTimer(1001, 1000, NULL);
 }
 
 
-void CDemoDlg::OnBnClickedBtnLoadLogo()
+
+
+void CDemoDlg::OnBnClickedBtnStop()
 {
-	CPaintDC dc(g_dlg);
+	KillTimer(1001);
+}
 
-	// 1.创建第二缓冲区
-	CDC memDC;
-	memDC.CreateCompatibleDC(&dc);
 
-	CBitmap bmp;
-	bmp.LoadBitmapW(IDB_BITMAP_LOGO);
 
-	// 2.把位图放入第二缓冲区，并在画布上绘制内容
-	memDC.SelectObject(&bmp);
-	memDC.SetBkMode(TRANSPARENT);
-	memDC.TextOutW(0, 0, _T("我的logo"));
 
-	// 3.将第二缓冲区内容拷贝到第一缓冲区，立即显示在屏幕上
-	CRect rect;
-	GetClientRect(rect);
+void CDemoDlg::OnTimer(UINT_PTR nIDEvent)
+{
+	if (nIDEvent == 1001) {
+		CTime now = CTime::GetCurrentTime();
 
-	dc.BitBlt(20, 20, rect.Width(), rect.Height(), &memDC, 0, 0, SRCCOPY);
+		CString str = now.Format(_T("%Y-%m-%d %H:%M:%S"));
+		SetDlgItemText(IDC_STATIC_Show_Time, str);
+	}
+
+	CDialogEx::OnTimer(nIDEvent);
+}
+
+void CDemoDlg::OnBnClickedButnStartProgress() {
+	::SetTimer(GetSafeHwnd(), 1002, 10, TimerProc);
+	m_btn_start_progress.EnableWindow(FALSE);
+	//GetDlgItem(IDC_BUTN_Start_Progress)->EnableWindow(FALSE);
+}
+
+
+void CAboutDlg::OnNMCustomdrawSlider(NMHDR* pNMHDR, LRESULT* pResult)
+{
+	LPNMCUSTOMDRAW pNMCD = reinterpret_cast<LPNMCUSTOMDRAW>(pNMHDR);
+	
+	g_dlg->m_static_show_slider_value = g_dlg->m_slider.GetPos();
+	
+
+	UpdateData(FALSE);
+
+	*pResult = 0;
+}
+
+
+void CDemoDlg::OnNMCustomdrawSlider(NMHDR* pNMHDR, LRESULT* pResult)
+{
+	LPNMCUSTOMDRAW pNMCD = reinterpret_cast<LPNMCUSTOMDRAW>(pNMHDR);
+	
+	m_static_show_slider_value = m_slider.GetPos();
+
+	UpdateData(FALSE);
+
+	*pResult = 0;
 }

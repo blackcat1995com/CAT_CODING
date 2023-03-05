@@ -32,9 +32,13 @@ protected:
 	afx_msg HCURSOR OnQueryDragIcon();
 	DECLARE_MESSAGE_MAP()
 public:
-	afx_msg void OnBnClickedBtnLoadnewimg();
-private:
-	CStatic m_pic;
-public:
-	afx_msg void OnBnClickedBtnLoadLogo();
+	afx_msg void OnBnClickedBtnStart();
+	afx_msg void OnBnClickedBtnStop();
+	afx_msg void OnTimer(UINT_PTR nIDEvent);
+	CProgressCtrl m_progress;
+	afx_msg void OnBnClickedButnStartProgress();
+	CButton m_btn_start_progress;
+	int m_static_show_slider_value;
+	CSliderCtrl m_slider;
+	afx_msg void OnNMCustomdrawSlider(NMHDR* pNMHDR, LRESULT* pResult);
 };

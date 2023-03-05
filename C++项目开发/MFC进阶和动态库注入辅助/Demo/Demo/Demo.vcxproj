@@ -20,7 +20,7 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
-    <ProjectGuid>{36A06A5E-61E8-40B6-AAC6-331D23CDD8EC}</ProjectGuid>
+    <ProjectGuid>{150FFD19-B5DC-47EF-9AC9-43B43137EE64}</ProjectGuid>
     <Keyword>MFCProj</Keyword>
     <RootNamespace>Demo</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
@@ -208,9 +208,6 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\Demo.ico" />
-    <Image Include="res\fj.bmp" />
-    <Image Include="res\fj2.bmp" />
-    <Image Include="res\hioier.bmp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
