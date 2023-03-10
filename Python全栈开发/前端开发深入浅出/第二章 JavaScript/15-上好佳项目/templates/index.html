@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>黑猫上好佳项目</title>
+    <link rel="icon" href="/static/cat_logo.ico">
+
+    <link rel="stylesheet" href="/static/css/base.css">
+    <link rel="stylesheet" href="/static/css/index.css">
+
+    <script src="/static/js/jquery/jquery-3.6.3.min.js"></script>
+</head>
+<body>
+    <header class="header">
+        <div class="header-topbar">
+            <div class="header-topbar-logo">
+
+            </div>
+
+            <ul>
+                <li><a href="#">首页</a></li>
+                <li><a href="#">品牌故事</a></li>
+                <li><a href="#">产品</a></li>
+                <li><a href="#">关于我们</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <div class="banner">
+        <div class="banner-imglist">
+            <img src="/static/images/01.jpg" alt="">
+            <img src="/static/images/02.jpg" alt="">
+            <img src="/static/images/03.jpg" alt="">
+            <img src="/static/images/04.jpg" alt="">
+        </div>
+
+        <ul class="banner-dotlist">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+
+        <span class="banner-pre">&lt;</span>
+        <span class="banner-next">&gt;</span>
+    </div>
+</body>
+<script type="module">
+    import {main} from "/static/js/index.js"
+
+    $(function(){
+        main();
+    });
+</script>
+</html>
