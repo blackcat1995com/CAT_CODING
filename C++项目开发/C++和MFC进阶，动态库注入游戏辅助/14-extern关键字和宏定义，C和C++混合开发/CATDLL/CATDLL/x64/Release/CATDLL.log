@@ -1,0 +1,11 @@
+﻿  pch.cpp
+  cat.cpp
+D:\Cat课件\CAT_CODING\C++项目开发\MFC进阶和动态库注入辅助\14-extern关键字和宏定义，C和C++混合开发\CATDLL\CATDLL\cat.cpp(5,45): warning C4273: “sum”: dll 链接不一致
+D:\Cat课件\CAT_CODING\C++项目开发\MFC进阶和动态库注入辅助\14-extern关键字和宏定义，C和C++混合开发\CATDLL\CATDLL\cat.h(14,14): message : 参见“sum”的前一个定义
+  dllmain.cpp
+    正在创建库 D:\Cat课件\CAT_CODING\C++项目开发\MFC进阶和动态库注入辅助\14-extern关键字和宏定义，C和C++混合开发\CATDLL\x64\Release\CATDLL.lib 和对象 D:\Cat课件\CAT_CODING\C++项目开发\MFC进阶和动态库注入辅助\14-extern关键字和宏定义，C和C++混合开发\CATDLL\x64\Release\CATDLL.exp
+  正在生成代码
+  Previous IPDB not found, fall back to full compilation.
+  All 2 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  已完成代码的生成
+  CATDLL.vcxproj -> D:\Cat课件\CAT_CODING\C++项目开发\MFC进阶和动态库注入辅助\14-extern关键字和宏定义，C和C++混合开发\CATDLL\x64\Release\CATDLL.dll
