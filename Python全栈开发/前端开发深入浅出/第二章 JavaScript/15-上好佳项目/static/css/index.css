@@ -1,51 +1,54 @@
+/* 网页头部 */
 .header{
     width: 100%;
     height: 87px;
     background-color: #FDEDDC;
-    z-index: 999;
-    overflow: hidden;
     position: fixed;
+    z-index: 999;
 }
 
 .header-topbar{
     width: 80%;
-    height: 75px;
-    margin: auto;
+    height: 87px;
     /* background-color: aqua; */
+    margin: auto;
 }
 
-.header .header-topbar .header-topbar-logo{
+.header-topbar-logo{
     width: 104px;
     height: 52px;
+    /* background-color: blueviolet; */
     margin-top: 18px;
     background: url(/static/images/logo1.png) no-repeat;
-    background-size: cover;
+    background-size: contain;
     float: left;
 }
 
-.header .header-topbar ul{
+/* 网页头部: 导航条 */
+.header-topbar-nav{
     width: 80%;
     height: 60px;
+    /* background-color:brown; */
     float: right;
-    margin-right: 40px;
-    margin-top: 15px;
-    /* background-color: burlywood; */
+    margin: 15px 40px 0 0;
+    
 }
 
-.header .header-topbar ul li{
+.header-topbar-nav>ul>li{
     width: 20%;
     float: left;
     line-height: 60px;
     font-size: 16px;
-}
-
-.header .header-topbar ul li a{
-    color: #646464;
     position: relative;
     left: 150px;
+   
 }
 
-.header .header-topbar ul li a:hover{
+.header-topbar-nav>ul>li>a{
+    color: #646464;
+}
+
+.header-topbar-nav>ul>li>a:hover{
     color: #A30000;
 }
 
@@ -53,6 +56,9 @@
 .banner{
     width: 100%;
     position: relative;
+    top: 80px;
+    height: 610px;
+    /* background-color: aqua; */
 }
 
 .banner-imglist{
@@ -65,38 +71,39 @@
     position: absolute;
 }
 
-/* 轮播图底部圆点 */
+/* 圆点列表 */
 .banner-dotlist{
     width: 100px;
     height: 15px;
+    /* background-color: red; */
     position: absolute;
+    /* top: 400px; */
+    bottom: 15px;
     left: 50%;
-    top: 636px;
-    /* background-color:#A30000; */
     margin-left: -50px;
 }
 
-.banner-dotlist li{
+.banner-dotlist>ul>li{
     width: 15px;
     height: 15px;
-    border: 1px solid white;
-    border-radius: 50%;
     float: left;
-    margin-left: 10px;
+    border: 1px solid white;
+    /* border: 1px solid red; */
+    margin-left: 8px;
+    border-radius: 50%;
 }
 
 /* 前后翻页 */
-.banner-pre, .banner-next{
-    display: block;
+.banner-pre, .banner-next {
     width: 40px;
     height: 40px;
-    border: 1px solid white;
     text-align: center;
     line-height: 35px;
     font-size: 30px;
     position: absolute;
-    top:360px;
-    color:white;
+    top: 310px;
+    color: white;
+    border: 1px solid white;
     border-radius: 50%;
 }
 

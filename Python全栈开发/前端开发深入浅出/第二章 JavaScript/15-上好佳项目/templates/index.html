@@ -4,27 +4,27 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>黑猫上好佳项目</title>
+    <title>上好佳</title>
     <link rel="icon" href="/static/cat_logo.ico">
 
     <link rel="stylesheet" href="/static/css/base.css">
     <link rel="stylesheet" href="/static/css/index.css">
-
     <script src="/static/js/jquery/jquery-3.6.3.min.js"></script>
+
 </head>
 <body>
     <header class="header">
-        <div class="header-topbar">
-            <div class="header-topbar-logo">
+        <div class="header-topbar clearfix">
+            <div class="header-topbar-logo"></div>
 
+            <div class="header-topbar-nav">
+                <ul>
+                    <li><a href="#">首页</a></li>
+                    <li><a href="#">品牌故事</a></li>
+                    <li><a href="#">产品</a></li>
+                    <li><a href="#">关于我们</a></li>
+                </ul>
             </div>
-
-            <ul>
-                <li><a href="#">首页</a></li>
-                <li><a href="#">品牌故事</a></li>
-                <li><a href="#">产品</a></li>
-                <li><a href="#">关于我们</a></li>
-            </ul>
         </div>
     </header>
 
@@ -36,22 +36,28 @@
             <img src="/static/images/04.jpg" alt="">
         </div>
 
-        <ul class="banner-dotlist">
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-        </ul>
+        <div class="banner-dotlist">
+            <ul>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
 
-        <span class="banner-pre">&lt;</span>
-        <span class="banner-next">&gt;</span>
+        <div class="banner-pre">&lt;</div>
+        <div class="banner-next">&gt;</div>
     </div>
+
 </body>
 <script type="module">
-    import {main} from "/static/js/index.js"
 
+    import {main} from "/static/js/index.js"
+    // alert("xxx");
     $(function(){
         main();
+
+        console.log("js");
     });
 </script>
 </html>
