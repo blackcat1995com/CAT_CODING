@@ -1,0 +1,11 @@
+﻿  pch.cpp
+  dllmain.cpp
+  MFCDll2.cpp
+D:\Cat课件\CAT_CODING\C++项目开发\C++和MFC进阶，动态库注入游戏辅助\19-MFC DLL共享库、静态库、扩展库\MFCDll2\MFCDll2\MFCDll2.cpp(11,32): warning C4190: “GetString”有指定的 C 链接，但返回了与 C 不兼容的 UDT“ATL::CStringT<wchar_t,StrTraitMFC_DLL<wchar_t,ATL::ChTraitsCRT<wchar_t>>>”
+D:\BlackCatSoftWare\VS2022\VC\Tools\MSVC\14.33.31629\atlmfc\include\afxstr.h(89): message : 参见“ATL::CStringT<wchar_t,StrTraitMFC_DLL<wchar_t,ATL::ChTraitsCRT<wchar_t>>>”的声明
+    正在创建库 D:\Cat课件\CAT_CODING\C++项目开发\C++和MFC进阶，动态库注入游戏辅助\19-MFC DLL共享库、静态库、扩展库\MFCDll2\x64\Release\MFCDll2.lib 和对象 D:\Cat课件\CAT_CODING\C++项目开发\C++和MFC进阶，动态库注入游戏辅助\19-MFC DLL共享库、静态库、扩展库\MFCDll2\x64\Release\MFCDll2.exp
+  正在生成代码
+  Previous IPDB not found, fall back to full compilation.
+  All 121 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  已完成代码的生成
+  MFCDll2.vcxproj -> D:\Cat课件\CAT_CODING\C++项目开发\C++和MFC进阶，动态库注入游戏辅助\19-MFC DLL共享库、静态库、扩展库\MFCDll2\x64\Release\MFCDll2.dll
