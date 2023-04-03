@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>拳皇97</title>
+    <link rel="icon" href="/static/cat_logo.ico">
+    <script src="/static/third_party/js/jquery/jquery-3.6.3.min.js"></script>
+
+    <link rel="stylesheet" href="/static/css/base.css">
+</head>
+<body>
+    <div id="kof">
+        <!-- <canvas width="1280" height="720" tabindex=0></canvas> -->
+    </div>
+</body>
+<script type="module">
+    import { KOF } from "/static/js/base.js";
+    // $(document).ready(function(){
+    // import { CatGameObject } from "/static/js/cat_game_object/base.js";
+    // });
+    $(function(){   // 当网页主要资源加载完才执行里面的js代码
+        let kof = new KOF("kof");
+
+        // let hero = new CatGameObject();
+    });
+</script>
+</html>
