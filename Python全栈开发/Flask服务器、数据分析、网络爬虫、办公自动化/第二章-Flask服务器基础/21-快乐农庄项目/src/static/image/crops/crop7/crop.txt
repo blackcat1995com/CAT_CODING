@@ -1,8 +1,0 @@
-cropId=7
-name=Î÷ºìÊÁ
-pic=seed.png
-stageCount=5
-unitTime=20
-sellMoney=44
-seedMoney=24
-buyLevel=2

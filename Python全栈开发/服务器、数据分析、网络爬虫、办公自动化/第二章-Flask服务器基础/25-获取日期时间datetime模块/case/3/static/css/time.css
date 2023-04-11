@@ -1,0 +1,147 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    background: #666;
+}
+
+.snow-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 100001;
+    /*background: url(./static/images/gg.jpg) center no-repeat;*/
+    background-size: cover;
+    z-index: 998;
+}
+
+.clock {
+    /*box-sizing: border-box;*/
+    width: 300px;
+    height: 300px;
+    background: rgba(0, 238, 255, 0.8);
+    border: 1px solid;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #fff;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    z-index: 999;
+}
+
+.hour_wheel, .min_wheel, .sec_wheel {
+    width: 100px;
+    height: 6px;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+    position: absolute;
+    top: 147px;
+    left: 140px;
+    transform-origin: 10px center;
+}
+
+.min_wheel {
+    width: 120px;
+    height: 4px;
+    top: 148px;
+    background: rgba(186, 255, 0, 0.7);
+}
+
+.sec_wheel {
+    width: 140px;
+    height: 2px;
+    top: 149px;
+    background: rgba(242, 157, 35, 0.7);
+}
+
+.circle {
+    width: 20px;
+    height: 20px;
+    background: #000;
+    border-radius: 50%;
+    color: #fff;
+    font-size: 14px;
+    line-height: 20px;
+    text-align: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 888;
+}
+
+.spot {
+    width: 3px;
+    height: 1px;
+    background: #000;
+    position: absolute;
+    transform-origin: left center;
+}
+
+.out_ring {
+    border: 1px solid;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    /*width: 300px;*/
+    /*height: 300px;*/
+}
+
+.timebox {
+    width: 100px;
+    height: 30px;
+    /*border: 1px solid #fff;*/
+    border-radius: 4px;
+    position: absolute;
+    bottom: 30px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    text-align: center;
+    line-height: 30px;
+    font-family: 'HappyZcool-201615507ac23b1d52e';
+}
+
+.week{
+    width: 100px;
+    text-align: center;
+    font-size: 1.4rem;
+    color: white;
+    font-family: ”微软雅黑”, serif;
+    font-weight:bold;
+    position: absolute;
+    top:50px;
+    left: 50%;
+    margin-left: -50px;
+
+
+
+
+}

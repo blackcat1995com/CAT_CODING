@@ -1,0 +1,59 @@
+INFO:werkzeug: * Running on http://127.0.0.1:8001/ (Press CTRL+C to quit)
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 668-811-909
+DEBUG:root:debug
+INFO:root:info
+WARNING:root:warning
+ERROR:root:error
+INFO:werkzeug:127.0.0.1 - - [01/Oct/2022 16:16:28] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Oct/2022 16:16:28] "GET /static/css/27/cs2.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Oct/2022 16:16:28] "GET /static/images/27/bg.jpg HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in '/home/cat/flask/index.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 668-811-909
+WARNING:root:warning
+ERROR:root:error
+INFO:werkzeug:127.0.0.1 - - [01/Oct/2022 16:17:18] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Oct/2022 16:17:18] "[36mGET /static/css/27/cs2.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [01/Oct/2022 16:17:18] "[36mGET /static/images/27/bg.jpg HTTP/1.1[0m" 304 -
+INFO:werkzeug: * Detected change in '/home/cat/flask/index.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 668-811-909
+INFO:werkzeug: * Detected change in '/home/cat/flask/index.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 668-811-909
+INFO:werkzeug: * Detected change in '/home/cat/flask/index.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 668-811-909
+INFO:werkzeug: * Detected change in '/home/cat/flask/index.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 668-811-909
+INFO:werkzeug: * Detected change in '/home/cat/flask/index.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 668-811-909
+INFO:werkzeug: * Detected change in '/home/cat/flask/index.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 668-811-909
+INFO:werkzeug: * Detected change in '/home/cat/flask/index.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 668-811-909
+INFO:werkzeug:127.0.0.1 - - [01/Oct/2022 16:20:48] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Oct/2022 16:20:48] "[36mGET /static/css/27/cs2.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [01/Oct/2022 16:20:48] "[36mGET /static/images/27/bg.jpg HTTP/1.1[0m" 304 -
+INFO:root:学生cat，性别男，报名成功
+INFO:werkzeug:127.0.0.1 - - [01/Oct/2022 16:20:55] "POST /log HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Oct/2022 16:20:56] "[36mGET /static/css/27/cs2.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [01/Oct/2022 16:20:56] "[36mGET /static/images/27/bg.jpg HTTP/1.1[0m" 304 -
+INFO:root:学生xm，性别男，报名成功
+INFO:werkzeug:127.0.0.1 - - [01/Oct/2022 16:21:25] "POST /log HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [01/Oct/2022 16:21:25] "[36mGET /static/css/27/cs2.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [01/Oct/2022 16:21:25] "[36mGET /static/images/27/bg.jpg HTTP/1.1[0m" 304 -

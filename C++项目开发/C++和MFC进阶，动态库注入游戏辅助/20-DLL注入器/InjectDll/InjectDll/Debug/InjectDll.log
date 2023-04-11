@@ -1,0 +1,6 @@
+﻿  CExportFuncDlg.cpp
+F:\黑猫系列课程\Cat课件\CAT_CODING\C++项目开发\C++和MFC进阶，动态库注入游戏辅助\20-DLL注入器\InjectDll\InjectDll\CExportFuncDlg.cpp(97,20): warning C4018: “<”: 有符号/无符号不匹配
+F:\黑猫系列课程\Cat课件\CAT_CODING\C++项目开发\C++和MFC进阶，动态库注入游戏辅助\20-DLL注入器\InjectDll\InjectDll\CExportFuncDlg.cpp(100,3): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+F:\黑猫系列课程\Cat课件\CAT_CODING\C++项目开发\C++和MFC进阶，动态库注入游戏辅助\20-DLL注入器\InjectDll\InjectDll\CExportFuncDlg.cpp(120,20): warning C4018: “<”: 有符号/无符号不匹配
+F:\黑猫系列课程\Cat课件\CAT_CODING\C++项目开发\C++和MFC进阶，动态库注入游戏辅助\20-DLL注入器\InjectDll\InjectDll\CExportFuncDlg.cpp(125,20): warning C4018: “<”: 有符号/无符号不匹配
+  InjectDll.vcxproj -> F:\黑猫系列课程\Cat课件\CAT_CODING\C++项目开发\C++和MFC进阶，动态库注入游戏辅助\20-DLL注入器\InjectDll\Debug\InjectDll.exe

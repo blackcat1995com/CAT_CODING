@@ -1,0 +1,86 @@
+/*头部*/
+
+
+.header{width:1000px;margin:0 auto;height:107px;position:relative;z-index:5;}
+.logo{width:175px;height:71px;margin-top:10px;}
+.head_mid{margin:15px 0 0 150px;}
+.head_login{height:34px;border:1px solid #ccc;border-radius:3px;margin:35px 22px 0 0;}
+
+/*精准票房搜索*/
+.share{width:350px; float:right; }
+.searcher { width:240px; margin:7px auto; height:25px; background:#FFF; border-radius:5px; font-size:16px;  box-shadow:1px 1px 2px rgba(0,0,0,0.4) inset; border: solid 1px #e9e7e8; float:left; }
+.searcher input.txt { height:25px; line-height:normal; line-height:25px \9;  padding-left:1%;width:75%; border:none; background:none; text-align:left; float:left; color:#76a788; }
+.searcher div.submit { float:right; text-align:center; width:40px; height:25px; line-height:25px; border:none; background:-webkit-linear-gradient(top, #009025, #016526); color:#FFF; border-radius:0 5px 5px 0; background:#0596fc; font-size:12px; }
+
+.nrbox5 ul li{ float:left; line-height:45px; margin-left:30px;}
+.duo { float:left; margin-left:8px; font-size:15px; font-weight:bold; margin-top:6px;}
+.duo a {color:#FFF; }
+.duo a:hover { color:#FF0; text-decoration:underline;}
+
+
+/*底部*/
+
+.footbj{ width:1014px;  margin:0 auto;}
+.footbj1{ width:7px; float:left;}
+.footbj2{ width:7px; float:right;}
+.footer{width:1000px;margin:0 auto;padding:10px 0 30px; }
+.foot-main div{width:33.3%;display:inline-block;float:left;}
+.foot-main div p{color:#666;line-height:23px;font-size:14px;text-align:left;text-align:left;}
+.foot-nav a{color:#666;}
+.foot-nav span{color:#666;margin:0 8px;}
+.footer p{margin:10px 0;color:#999999;}
+.footer p a { color:#09F;}
+.footer p a:hover { color:#F00; text-decoration:underline;}
+.ad_bar,.footer{width:1000px;margin:0 auto;padding:25px 0 50px;text-align:center;}
+.page{
+	text-align:center;
+	padding:8px; font-family:"微软雅黑";
+}
+
+   div.pagination{
+        padding: 3px;
+        margin: 3px;
+        text-align:center;
+        font-family:Tahoma,Helvetica,sans-serif;
+        font-size:1em;
+    }
+    
+    div.pagination a{
+        border: 1px solid #ccdbe4;font-family:"微软雅黑";
+        margin-right:3px;
+        padding:2px 8px;
+        background-position:bottom;
+        text-decoration: none;
+        color: #0a82fc;     
+    }
+    div.pagination a:hover, div.pagination a:active{
+        border: 1px solid #ccdbe4;
+		text-decoration: underline;
+    }
+    div.pagination span.current{
+        margin-right:3px;
+        padding:2px 6px;    
+        font-weight: bold;
+        color: #919191;
+        border: 1px solid #ccdbe4;
+    }
+    div.pagination span.disabled {
+        border: 1px solid #ccdbe4;
+        margin-right:3px;
+        padding:2px 8px;
+        color: #ccc;
+    }
+    div.pagination a.next{
+        border:1px solid #ccdbe4;
+        margin:0 0 0 10px;
+    }
+    div.pagination a.next:hover{
+        border:1px solid #2b55af;
+    }
+    div.pagination a.prev{
+        border:1px solid #ccdbe4;
+        margin:0 10px 0 0;
+    }
+    div.pagination a.prev:hover{
+        border:1px solid #2b55af;
+    }

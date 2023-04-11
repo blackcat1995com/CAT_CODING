@@ -1,0 +1,84 @@
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>消费总额</title>
+<script src="/static/js/jquery/jquery.min.js"></script>
+<script src="/static/js/highcharts.js"></script>
+</head>
+<body>
+<div id="container" style="width: 800px; height: 400px; margin: 0 auto"></div>
+<script language="JavaScript">
+$(document).ready(function() {
+   var chart = {
+      type: 'column'
+   };
+   var title = {
+      text: '2017-2019每个省份人均支出总额'
+   };
+   var subtitle = {
+      text: '统计数据'
+   };
+   var xAxis = {
+      type: 'category',
+      labels: {
+         rotation: -45,
+         style: {
+            fontSize: '13px',
+            fontFamily: 'Verdana, sans-serif'
+         }
+      }
+   };
+   var yAxis ={
+      labels:{step:50000},
+      title: {
+        text: '支出总额'
+      }
+   };
+   var tooltip = {
+      pointFormat: '支出总额: <b>{point.y:.2f} 元</b>'
+   };
+   var credits = {
+      enabled: false
+   };
+   var series= [{
+            name: '支出总额',
+            data: [
+            ],
+            dataLabels: {
+                enabled: true,
+                rotation: -90,
+                color: '#FFFFFF',
+                align: 'right',
+                format: '{point.y:.2f}', // one decimal
+                y: 10, // 10 pixels down from the top
+                style: {
+                    fontSize: '13px',
+                    fontFamily: 'Verdana, sans-serif'
+                }
+            }
+   }];
+
+   var json = {};
+   json.chart = chart;
+   json.title = title;
+   json.subtitle = subtitle;
+   json.xAxis = xAxis;
+   json.yAxis = yAxis;
+   json.tooltip = tooltip;
+   json.credits = credits;
+   json.series = series;
+      $.get('/data',function (result) {
+
+       for(var i=0;i<result.data.length;i++){
+           series[0].data.push([result.data[i]._id,result.data[i].sum_spending]);
+       }
+       console.log('series',series);
+       json.series = series;
+       json.yAxis = yAxis;
+       $('#container').highcharts(json);
+   });
+
+});
+</script>
+</body>
+</html>

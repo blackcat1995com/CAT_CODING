@@ -1,0 +1,562 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>快乐农庄</title>
+		<style>
+			*{margin:auto;padding:0;}
+			canvas {
+				cursor: url("/static/image/icon/mouse.png"), default;
+			}
+			#toast{
+				width:400px;
+				height:30px;
+				position:absolute;
+				display:none;
+				font-size:20px;
+				color:black;
+				weight:bold;
+				top:50px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="stage" style="margin: 0 auto; width: 1024px; height: 768px; text-align: center; vertical-align: middle;position:relative;" >
+			<canvas id="canvas" width="1024px" height="768px">
+				不支持画板对象
+
+			</canvas>
+			<div id="toast"></div>
+
+			<script src="/static/js/jquery/jquery.min.js"></script>
+			<script src="/static/js/image.js"></script>
+			<script>
+				//植物的数组
+				var plants = [];
+				//土地对应的坐标位置
+				var landPoint = [{
+					x : 300,
+					y : 350
+				}, {
+					x : 150,
+					y : 425
+				}, {
+					x : 450,
+					y : 425
+				}, {
+					x : 300,
+					y : 500
+				}, {
+					x : 600,
+					y : 500
+				}, {
+					x : 450,
+					y : 575
+				}];
+
+				//植物构造方法
+				function Plant(x, y, frames,name,seed_price) {
+					this.seed_price = seed_price;
+					this.name = name;
+					this.width = 201;
+					this.height = 103;
+					this.x = x;
+					this.y = y - 20;
+					//减20是为了调节图片的相对位置
+					this.frames = frames;
+					//图片的数组
+					this.nowStage = 0;
+					//当前生长状态
+					this.paint = function() {
+						ctx.drawImage(this.frames[this.nowStage], this.x, this.y-10);
+					}
+				}
+			</script>
+
+			{% for p in user.crops%}
+				<script>
+					var p = JSON.parse('{{p|tojson}}');
+					console.log(p);
+					var plant = new Plant(landPoint[p.land].x, landPoint[p.land].y, seedFrames[seedNames.indexOf(p.name)],p.name,p.seed_price);
+					console.log("plant:",plant);
+					plant.nowStage = p.level;
+					plants.push(plant)
+				</script>
+			{% endfor %}
+
+		</div>
+	</body>
+</html>
+
+
+<script>
+				//用户名
+				username = "{{user.username}}";
+				//金币数
+				coins = {{user.coins}};
+				//种子区域可否是可见状态
+				isSeedRegionVisible = false;
+				//鼠标在 menu seed 区域内的方向
+				direction_left2right = false;
+				menu_seed_last_x = 1000;
+				ajax_flag = false;
+			    //当前鼠标状态,normal是普通，seed种子，kettle浇水，shovel移除
+			    operation_states = {
+			         "normal":"normal",
+			        "seed":"seed",
+			        "kettle":"kettle",
+			        "shovel":"shovel",
+
+			    }
+			    operate = operation_states["normal"];
+			    //当前鼠标是否在种子菜单内
+			    menuSeedRegion = false;
+			    //当前鼠标是否在种子界面内
+			    seedRegion = false;
+				//画布和画笔
+				var canvas = document.getElementById("canvas");
+				var ctx = canvas.getContext("2d");
+				//菜单的数组
+				var menus = [];
+				//土地的数组
+				var lands = [];
+				//种子的数组
+				var seeds = [];
+				//菜单对应的坐标位置
+				var menuPoint = [{
+					x : 60,
+					y : 200
+				},{
+					x : 60,
+					y : 245
+				},{
+					x : 60,
+					y : 320
+				},{
+					x : 60,
+					y : 395
+				}];
+				//种子对应的坐标位置
+				var seedFirstY = 230
+				var xY = 50
+				var seedPoint = [{
+					x : 120,
+					y : seedFirstY
+				},{
+					x : 120,
+					y : seedFirstY + xY
+				},{
+					x : 120,
+					y : seedFirstY + 2*xY
+				},{
+					x : 120,
+					y : seedFirstY + 3*xY
+				},{
+					x : 120,
+					y : seedFirstY + 4*xY
+				},{
+					x : 120,
+					y : seedFirstY + 5*xY
+				}];
+
+				
+				//添加菜单
+				addMenu();
+				//添加种子
+				addSeed();
+				//添加土地
+				addLand();
+
+
+
+
+				//游戏的主要控制器
+				setInterval(function() {
+					//画背景
+					ctx.drawImage(bg1, 0, 0);
+					//画姓名和金币数
+				    ctx.font = "25px Arial";
+				    ctx.fillStyle = "#ffffff";
+                    ctx.fillText("欢迎 "+username,140,40);
+                    ctx.drawImage(coin, 320, 10);
+                    ctx.fillStyle = "#ff8e02";
+                    ctx.fillText(coins,365,40);
+
+					
+					//画出组件
+					paintComponent();
+				},500);
+
+				canvas.onmousemove = function(e){
+				    var mpoint = getPointOnCanvas(e.x, e.y);
+
+                    menuSeedRegion = checkMenuSeedRegion(mpoint.x,mpoint.y);
+                    seedRegion = checkSeedRegion(mpoint.x,mpoint.y);
+
+                    if(!seedRegion){
+						direction_left2right = false;
+					}
+
+                    //记录鼠标在menu seed 范围内的方向
+                    if(menuSeedRegion){
+						direction_left2right = mpoint.x > menu_seed_last_x;
+						menu_seed_last_x = mpoint.x
+                    }
+
+
+
+				}
+
+				canvas.onclick = function(e) {
+					var mpoint = getPointOnCanvas(e.x, e.y);
+
+					//点击菜单
+					for (var i = 1; i < menus.length; i++) {
+						if(menus[i].x <= mpoint.x && mpoint.x <= menus[i].x + menus[i].width && menus[i].y <= mpoint.y && mpoint.y <= menus[i].y + menus[i].height){
+							canvas.style.cursor = "url('"+menus[i].img.src+"'),auto";
+							if(i == 1){
+							    operate = operation_states["kettle"];
+							}else if(i == 2){
+							    operate = operation_states["collect"];
+							}else if(i == 3){
+							    operate = operation_states["shovel"];
+							}
+							return;
+						}
+					}
+
+					//点击种子,只在种子区域可见时点击才有效
+					if(isSeedRegionVisible){
+						for (var i = 0; i < seeds.length; i++) {
+							if(seeds[i].x <= mpoint.x && mpoint.x <= seeds[i].x + seeds[i].width && seeds[i].y <= mpoint.y && mpoint.y <= seeds[i].y + seeds[i].height){
+								//被点击种子的名字
+								seedName = seeds[i].name;
+								//被点击种子的价格
+								seedPrice = seeds[i].price;
+								//被点击种子的图片
+								frames = seeds[i].frames;
+								canvas.style.cursor = "url('"+menus[0].img.src+"'),auto";
+								operate = operation_states["seed"];
+								return;
+							}
+						}
+					}
+
+
+					//点击土地
+					for (var i = 0; i < landPoint.length; i++) {
+						if (landPoint[i].x <= mpoint.x && mpoint.x <= landPoint[i].x + lands[i].width && landPoint[i].y <= mpoint.y && mpoint.y <= landPoint[i].y + lands[i].height) {
+
+							var x = landPoint[i].x;
+							var y = landPoint[i].y;
+
+						    //普通操作点击土地，则什么都不做
+						    if(operate == operation_states["normal"]){
+						    	showMsg("请选择工具进行操作",x,y);
+						        return;
+						    }
+
+
+							var land_no = findIndex(landPoint,{"x":x,"y":y});
+
+							if(operate == operation_states["seed"]){
+                                //当前植物不存在,创建一个植物
+                                if(checkPlant(x, y) != undefined && checkPlant(x, y).nowStage == 5){
+                                    showMsg("植物已经成熟，请及时收割",x,y);
+                                }else if(checkPlant(x, y) != undefined && checkPlant(x, y).nowStage == 6){
+                                    showMsg("植物已经枯萎，请及时移除并开始新的播种",x,y);
+                                }else if(checkPlant(x, y) != undefined && checkPlant(x, y).nowStage < 5){
+                                    showMsg("请及时浇水，让你的植物快快生长",x,y);
+                                }else{
+									//ajax播种
+									ajax_crop(seedName,seedPrice,land_no,{x,y});
+                                }
+                            }else if(operate == operation_states["kettle"]){
+                                //已经存在植物，并且当前操作是浇水，当前状态nowStage增加1
+                                if(checkPlant(x, y) != undefined && checkPlant(x, y).nowStage == 5){
+                                    if(window.confirm("已是收获的季节，如果继续浇水，会失去你的果实，确定浇水？")){
+                                        //继续浇水,植物变枯萎
+                                        ajax_water(checkPlant(x, y),land_no,{x,y});
+                                    }
+                                }else if(checkPlant(x, y) != undefined && checkPlant(x, y).nowStage == 6){
+                                	showMsg("植物已经枯萎，请及时移除并开始新的播种",x,y);
+                                }else if(checkPlant(x, y) != undefined && checkPlant(x, y).nowStage < 5){
+                                	//ajax浇水
+                                	ajax_water(checkPlant(x, y),land_no,{x,y});
+                                }else{
+                                    //还未种植
+                                    showMsg("土地闲置中，请尽快播种",x,y);
+                                }
+                            }else if(operate == operation_states["collect"]){
+                                if(checkPlant(x, y) != undefined && checkPlant(x, y).nowStage == 5){
+                                	//ajax收获
+                                	ajax_harvest(checkPlant(x, y),land_no,{x,y});
+                                }else if(checkPlant(x, y) != undefined && checkPlant(x, y).nowStage == 6){
+                                	showMsg("植物已经枯萎，请及时移除并开始新的播种",x,y);
+                                }else if(checkPlant(x, y) != undefined && checkPlant(x, y).nowStage < 5){
+                                	showMsg("植物还未成熟，请继续浇水使之生长",x,y);
+                                }else{
+                                    //还未种植
+                                    showMsg("土地闲置中，请尽快播种",x,y);
+                                }
+                            }else if(operate == operation_states["shovel"]){
+                                if(checkPlant(x, y) != undefined && checkPlant(x, y).nowStage == 6){
+                                	//ajax移除
+                                	ajax_remove(checkPlant(x, y),land_no,{x,y})
+                                }else if(checkPlant(x, y) != undefined && checkPlant(x, y).nowStage <= 5){
+                                	if(window.confirm("现在移除，之前投入的金币就打水漂了，确定移除？")){
+										//继续移除
+										ajax_remove(checkPlant(x, y),land_no,{x,y})
+                                    }
+                                }else{
+                                	showMsg("土地闲置中，请尽快播种",x,y);
+                                }
+                            }
+							return;
+						}
+					}
+
+					//如果点击的是其他地方，鼠标变成默认的
+					canvas.style.cursor = "url('/static/image/icon/mouse.png'),auto";
+					operate = operation_states["normal"];
+				}
+
+				function ajax_crop(crop,seed_price,land_no,pos){
+					if(ajax_flag)return;
+					ajax_flag = true;
+					//先判断金币是否足够
+					if(coins < seed_price){
+						showMsg("金币不足，无法种植",pos.x,pos.y);
+						return;
+					}
+
+					data = {"crop":crop,"seed_price":seed_price,"land":"land"+land_no};
+					$.get("/plant/crop",data,function(result){
+						if(result.state == "success"){
+							plants[plants.length] = new Plant(pos.x, pos.y, frames,crop,seed_price);
+							showMsg("金币-"+seedPrice+",种植成功",pos.x,pos.y);
+							coins = result.data;
+							ajax_flag = false;
+						}
+					});
+				}
+
+				function ajax_water(crop,land_no,pos){
+					if(ajax_flag)return;
+					ajax_flag = true;
+					//先判断金币是否足够
+					if(coins < 2){
+						showMsg("金币不足，无法浇水",pos.x,pos.y);
+						return;
+					}
+
+					data = {"crop":crop.name,"land":"land"+land_no,"seed_price":crop.seed_price};
+					$.get("/plant/water",data,function(result){
+						console.log(result['state'])
+						if(result.state == "success"){
+							crop.nowStage++;
+							showMsg("金币-2,浇水成功",pos.x,pos.y);
+							coins = result.data;
+							ajax_flag = false;
+						}
+					});
+				}
+
+				function ajax_harvest(crop,land_no,pos){
+					if(ajax_flag)return;
+					ajax_flag = true;
+					data = {"crop":crop.name,"land":"land"+land_no,"seed_price":crop.seed_price};
+					$.get("/plant/harvest",data,function(result){
+						if(result.state == "success"){
+							crop.nowStage++;
+							coinX = result.data - coins;
+							showMsg("收获成功，金币+"+coinX,pos.x,pos.y);
+							coins = result.data;
+							ajax_flag = false;
+						}
+					});
+				}
+
+				function ajax_remove(crop,land_no,pos){
+					if(ajax_flag)return;
+					ajax_flag = true;
+					data = {"crop":crop.name,"land":"land"+land_no,"seed_price":crop.seed_price};
+					$.get("/plant/eradicate",data,function(result){
+						if(result.state == "success"){
+							showMsg("移除成功，请开始新的播种",pos.x,pos.y);
+							 //从数组中删除植物
+							deleteEleFromArray(plants,crop);
+							ajax_flag = false;
+						}
+					});
+				}
+
+				function deleteEleFromArray(array,ele){
+				    array.forEach(function(item, index, arr) {
+                        if(item == ele) {
+                            arr.splice(index, 1);
+                        }
+                    });
+				}
+
+                //检查鼠标是否滑动到植物菜单
+                function checkMenuSeedRegion(x,y){
+                    if( menus[0].x <= x && x <= menus[0].x + menus[0].width && menus[0].y <= y && y<= menus[0].y + menus[0].height/2){
+                        return true;
+                    }
+                    return false;
+                }
+
+
+                //检查鼠标是否种子界面区域
+                function checkSeedRegion(x,y){
+                	//鼠标是否在种子背景图片区域内
+                	if(108 <= x  && x <= 258 && 200 <= y && y <= 556){
+                		return true;
+                	}
+                	return false;
+
+                }
+
+				//检查当前土地是否有植物
+				function checkPlant(x, y) {
+					for (var i = 0; i < plants.length; i++) {
+						if (plants[i].x == x && plants[i].y == y - 20) {
+							return plants[i];
+						}
+					}
+				}
+
+				function getPointOnCanvas(x, y) {
+					var bbox = canvas.getBoundingClientRect();
+
+					//处理铲子图片的y值
+					if(operate == operation_states["shovel"]){
+						return {
+                            x : x - bbox.left,
+                            y : y - bbox.top+32
+                        };
+					}
+
+					return {
+						x : x - bbox.left,
+						y : y - bbox.top
+					};
+				}
+
+				//查询对象元素在数组中的索引
+				function findIndex(l,o){
+					var objStr = JSON.stringify(o)
+					return l.reduce((index,ele,i)=>{
+						if(JSON.stringify(ele) === objStr) {
+							return i
+						} else {
+							return index
+						}
+					},-1)
+				}
+
+				//添加土地
+				function addLand() {
+					for (var i = 0; i < 6; i++) {
+						lands[lands.length] = new Land(landPoint[i].x, landPoint[i].y, soil1);
+					}
+				}
+				
+				//添加菜单
+				function addMenu(){
+					for (var i = 0; i < menuPoint.length; i++) {
+						menus[menus.length] = new Menu(menuPoint[i].x,menuPoint[i].y,menuImg[i]);
+					}
+				}
+
+				//添加种子
+				function addSeed(){
+				    for (var i = 0; i < seedPoint.length; i++) {
+				        seeds[i] = new Seed(seedPoint[i].x,seedPoint[i].y,seedFrames[i],seedNames[i],seedPrices[i]);
+				    }
+				}
+				var show_flag = false;
+				function showMsg(msg,x,y){
+					if(show_flag)return;
+					show_flag = true;
+					$("#toast").css({"left":x,"top":y,"display":"block",opacity:"1"});
+					$("#toast").text(msg);
+					$("#toast").animate({top:(y-100)+"px",opacity:"0"},1000,function(){
+						//动画执行完毕，隐藏元素
+						$("#toast").css({"display":"none"});
+						show_flag = false;
+					});
+				}
+
+				//画组件
+				function paintComponent() {
+					//画土地
+					for (var i = 0; i < lands.length; i++) {
+						lands[i].paint();
+					}
+					//画植物
+					for (var i = 0; i < plants.length; i++) {
+						plants[i].paint();
+					}
+
+					//画菜单
+					for (var i = 0; i < menus.length; i++) {
+						menus[i].paint();
+					}
+					//画种子,在种子菜单范围内或者种子界面范围内才绘制,并且是普通操作时
+					if((menuSeedRegion || (direction_left2right && seedRegion)) && operate == operation_states["normal"]){
+						isSeedRegionVisible = true;
+						//画种子背景
+						ctx.drawImage(seedBg, 108, 200);
+						//画种子
+                        for (var i = 0; i < seeds.length; i++) {
+                            seeds[i].paint();
+                        }
+					}else{
+						isSeedRegionVisible = false;
+					}
+				}
+
+				//土地构造方法
+				function Land(x, y, img) {
+					this.width = 201;
+					this.height = 103;
+					this.x = x;
+					this.y = y;
+					this.img = img;
+					this.paint = function() {
+						ctx.drawImage(this.img, this.x, this.y);
+					}
+				}
+
+
+
+
+				//种子构造方法
+				function Seed(x, y, frames,name,price) {
+				    this.name = name;
+				    this.price = price;
+					this.width = 130;
+					this.height = 48;
+					this.x = x;
+					this.y = y;
+					this.frames = frames;
+					this.paint = function() {
+						ctx.drawImage(this.frames[7], this.x, this.y);
+					}
+				}
+				
+				//菜单构造方法
+				function Menu(x,y,img){
+					this.width = 48;
+					this.height = 48;
+					this.x = x;
+					this.y = y;
+					this.img = img;
+					this.paint = function() {
+						ctx.drawImage(this.img, this.x, this.y);
+					}
+				}
+
+			</script>

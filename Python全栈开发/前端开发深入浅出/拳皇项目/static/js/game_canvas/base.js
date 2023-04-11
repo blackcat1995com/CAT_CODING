@@ -1,3 +1,4 @@
+import { Controller } from "/static/js/controller/base.js";
 import { CatGameObject } from "/static/js/cat_game_object/base.js";
 
 class GameCanvas extends CatGameObject{
@@ -10,6 +11,8 @@ class GameCanvas extends CatGameObject{
         this.root.$kof.append(this.$canvas);
 
         this.$canvas.focus();
+
+        this.controller = new Controller(this.$canvas);
     }
 
     start(){
