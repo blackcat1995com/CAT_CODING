@@ -17,6 +17,30 @@
 #define new DEBUG_NEW
 #endif
 
+// 进程提权
+BOOL ImproveAccessPrivilege(HANDLE hProcess) {
+	HANDLE tokenHandle;
+	LUID lpLuid;
+
+	if (!OpenProcessToken(hProcess, TOKEN_ALL_ACCESS, &tokenHandle)) return FALSE;
+
+	if (!LookupPrivilegeValue(NULL, SE_SECURITY_NAME, &lpLuid)) {
+		CloseHandle(tokenHandle);
+		return FALSE;
+	}
+
+	TOKEN_PRIVILEGES tkp;
+	tkp.PrivilegeCount = 1;
+	tkp.Privileges[0].Luid = lpLuid;
+	tkp.Privileges[0].Attributes = SE_PRIVILEGE_ENABLED;
+
+	if (!AdjustTokenPrivileges(tokenHandle, FALSE, &tkp, sizeof(tkp), NULL, NULL)) {
+		CloseHandle(tokenHandle);
+		return FALSE;
+	}
+
+	return TRUE;
+}
 
 // 用于应用程序“关于”菜单项的 CAboutDlg 对话框
 
@@ -82,6 +106,8 @@ BEGIN_MESSAGE_MAP(CInjectDllDlg, CDialogEx)
 	ON_BN_CLICKED(IDC_BTN_REMOVE_DLL, &CInjectDllDlg::OnBnClickedBtnRemoveDll)
 	ON_BN_CLICKED(IDC_BTN_CLEAR_DLL, &CInjectDllDlg::OnBnClickedBtnClearDll)
 	ON_BN_CLICKED(IDC_BTN_SET_EXPORT_FUNC, &CInjectDllDlg::OnBnClickedBtnSetExportFunc)
+	ON_BN_CLICKED(IDC_BTN_INJECT_DLL, &CInjectDllDlg::OnBnClickedBtnInjectDll)
+	ON_BN_CLICKED(IDC_BTN_UNLOAD_DLL, &CInjectDllDlg::OnBnClickedBtnUnloadDll)
 END_MESSAGE_MAP()
 
 
@@ -117,6 +143,10 @@ BOOL CInjectDllDlg::OnInitDialog()
 	SetIcon(m_hIcon, FALSE);		// 设置小图标
 
 	// TODO: 在此添加额外的初始化代码
+
+	// 进程提权
+	ImproveAccessPrivilege(GetCurrentProcess());
+
 	m_list_ctrl_show_dlls.SetExtendedStyle(LVS_EX_FULLROWSELECT | LVS_EX_SINGLEROW | LVS_EX_GRIDLINES | LVS_EX_CHECKBOXES);
 	m_list_ctrl_show_dlls.InsertColumn(0, _T("是否选择"), LVCFMT_LEFT, 100);
 	m_list_ctrl_show_dlls.InsertColumn(1, _T("DLL文件路径"), LVCFMT_LEFT, 200);
@@ -168,7 +198,6 @@ void CInjectDllDlg::OnPaint()
 }
 
 //当用户拖动最小化窗口时系统调用此函数取得光标
-//显示。
 HCURSOR CInjectDllDlg::OnQueryDragIcon()
 {
 	return static_cast<HCURSOR>(m_hIcon);
@@ -309,4 +338,324 @@ void CInjectDllDlg::OnBnClickedBtnSetExportFunc()
 
 	//AfxMessageBox(export_func_dlg.dll_name_path_str);
 	export_func_dlg.DoModal();
+}
+
+// 远线程注入
+BOOL CInjectDllDlg::CreateRemoteDll(const CHAR* sz_full_dll_path, const CHAR* sz_func_name, LPCWSTR dll_name_str, DWORD dwPid, BOOL isInject) {
+
+	// 目标进程句柄
+	HANDLE hRemoteProcess = OpenProcess(PROCESS_ALL_ACCESS, FALSE, dwPid);
+	if (!hRemoteProcess) {
+		AfxMessageBox(_T("打开目标进程失败！"));
+		return FALSE;
+	}
+
+	CHAR* pszDllRemoteAddr = (CHAR*)VirtualAllocEx(hRemoteProcess, NULL, strlen(sz_full_dll_path) + 1, MEM_COMMIT, PAGE_READWRITE);
+	if (!pszDllRemoteAddr) {
+		AfxMessageBox(_T("在远程进程地址空间分配Dll文件路径失败！"));
+		return FALSE;
+	}
+
+	if (!WriteProcessMemory(hRemoteProcess, pszDllRemoteAddr, (LPCVOID)sz_full_dll_path, strlen(sz_full_dll_path) + 1, NULL)) {
+		AfxMessageBox(_T("将Dll路径复制到远程地址空间失败！"));
+		return FALSE;
+	}
+
+	if (isInject) {
+		// 创建远程线程
+		PTHREAD_START_ROUTINE pfbStartAddrLoadLibraryA = (PTHREAD_START_ROUTINE)GetProcAddress(GetModuleHandle(_T("Kernel32")), "LoadLibraryA");
+		if (!pfbStartAddrLoadLibraryA) {
+			AfxMessageBox(_T("获取LoadLibraryA地址失败！"));
+			return FALSE;
+		}
+
+		HANDLE hRemoteThread = CreateRemoteThread(hRemoteProcess, NULL, 0, pfbStartAddrLoadLibraryA, pszDllRemoteAddr, 0, NULL);
+		if (!hRemoteProcess) {
+			AfxMessageBox(_T("创建远程线程失败！"));
+			return FALSE;
+		}
+
+		HMODULE hDllModule = LoadLibraryA(sz_full_dll_path);
+
+		PTHREAD_START_ROUTINE pfbStartAddrDllFunc = (PTHREAD_START_ROUTINE)GetProcAddress(GetModuleHandle(dll_name_str), sz_func_name);
+		if (!pfbStartAddrDllFunc) {
+			AfxMessageBox(_T("获取pfbStartAddrDllFunc地址失败！"));
+			return FALSE;
+		}
+
+		hRemoteThread = CreateRemoteThread(hRemoteProcess, NULL, 0, pfbStartAddrDllFunc, pszDllRemoteAddr, 0, NULL);
+		if (!hRemoteProcess) {
+			AfxMessageBox(_T("创建远程线程调用Dll函数失败！"));
+			return FALSE;
+		}
+
+		FreeLibrary(hDllModule);
+
+		m_edit_show_process_modules = _T("注入成功！");
+		UpdateData(FALSE);
+	}
+	else {
+		PTHREAD_START_ROUTINE pfbStartAddrLoadLibraryA = (PTHREAD_START_ROUTINE)GetProcAddress(GetModuleHandle(_T("Kernel32")), "GetModuleHandleA");
+		if (!pfbStartAddrLoadLibraryA) {
+			AfxMessageBox(_T("获取GetModuleHandleA地址失败！"));
+			return FALSE;
+		}
+
+		HANDLE hRemoteThread = CreateRemoteThread(hRemoteProcess, NULL, 0, pfbStartAddrLoadLibraryA, pszDllRemoteAddr, 0, NULL);
+		if (!hRemoteThread) {
+			AfxMessageBox(_T("获取hRemoteThread失败！"));
+			return FALSE;
+		}
+	
+		WaitForSingleObject(hRemoteThread, INFINITE);
+		DWORD dwValue = 0;
+		GetExitCodeThread(hRemoteThread, &dwValue);
+		if (!dwValue) {
+			VirtualFreeEx(hRemoteProcess, pszDllRemoteAddr, strlen(sz_full_dll_path) + 1, MEM_DECOMMIT);
+			AfxMessageBox(_T("卸载远程线程失败！"));
+			return FALSE;
+		}
+
+		PTHREAD_START_ROUTINE pRemoteFunc = (PTHREAD_START_ROUTINE)::GetProcAddress(
+			GetModuleHandle(_T("Kernel32")), "FreeLibrary");
+		if (NULL == pRemoteFunc)
+		{
+			::VirtualFreeEx(hRemoteProcess, pszDllRemoteAddr, strlen(sz_full_dll_path) + 1, MEM_DECOMMIT);
+			
+			AfxMessageBox(_T("获取FreeLibrary失败！"));
+			return FALSE;
+		}
+
+		hRemoteThread = CreateRemoteThread(hRemoteProcess, NULL, 0, pRemoteFunc, (LPVOID)dwValue, 0, NULL);
+		if (NULL == hRemoteThread)
+		{
+			::VirtualFreeEx(hRemoteProcess,pszDllRemoteAddr, strlen(sz_full_dll_path) + 1, MEM_DECOMMIT);
+			AfxMessageBox(_T("获取hRemoteThread失败！"));
+			return FALSE;
+		}
+		m_edit_show_process_modules = _T("卸载成功！");
+		UpdateData(FALSE);
+	}
+	
+	return TRUE;
+}
+
+// 注入方法2
+BOOL CInjectDllDlg::InjectRemoteDll(CString full_dll_path, CString func_name, LPCWSTR dll_name_str, DWORD dwPid, BOOL isInject) {
+	// 目标进程句柄
+	HANDLE hRemoteProcess = OpenProcess(PROCESS_ALL_ACCESS, FALSE, dwPid);
+	if (!hRemoteProcess) {
+		AfxMessageBox(_T("打开目标进程失败！"));
+		return FALSE;
+	}
+
+	LPVOID pDllRemoteAddr = VirtualAllocEx(hRemoteProcess, NULL, full_dll_path.GetLength() + 1, MEM_COMMIT, PAGE_READWRITE);
+	if (!pDllRemoteAddr) {
+		AfxMessageBox(_T("在远程进程地址空间分配Dll文件路径失败！"));
+		return FALSE;
+	}
+
+	if (!WriteProcessMemory(hRemoteProcess, pDllRemoteAddr, full_dll_path.GetBuffer(0), full_dll_path.GetLength() + 1, NULL)) {
+		AfxMessageBox(_T("将Dll路径复制到远程地址空间失败！"));
+		return FALSE;
+	}
+
+	HMODULE hK32Module = GetModuleHandle(_T("Kernel32.dll"));
+
+	HANDLE hRemoteThread = NULL;
+
+	if (isInject) {
+		PTHREAD_START_ROUTINE pStartAddrLoadLibraryA = (PTHREAD_START_ROUTINE)GetProcAddress(hK32Module, "LoadLibraryA");
+		if (!pStartAddrLoadLibraryA) {
+			AfxMessageBox(_T("获取LoadLibraryA地址失败！"));
+			return FALSE;
+		}
+
+		hRemoteThread = CreateRemoteThread(hRemoteProcess, NULL, 0, pStartAddrLoadLibraryA, pDllRemoteAddr, 0, NULL);
+		if (!hRemoteProcess) {
+			AfxMessageBox(_T("创建远程线程失败！"));
+			return FALSE;
+		}
+
+		// 获取导出函数
+		const CHAR* sz_full_dll_path;	// dll路径名
+		CHAR sz_tmp_full_dll_path[300];
+		::wsprintfA(sz_tmp_full_dll_path, "%ls", (LPCTSTR)full_dll_path);
+		sz_full_dll_path = sz_tmp_full_dll_path;
+
+		HMODULE hDllModule = LoadLibraryA((LPCSTR)full_dll_path.GetBuffer());
+		//HMODULE hDllModule = LoadLibraryA(sz_full_dll_path);
+		if (hDllModule) {
+			AfxMessageBox(_T("获取hDllModule地址成功！"));
+		}
+		else {
+			AfxMessageBox(_T("获取hDllModule地址失败！"));
+		}
+
+		PTHREAD_START_ROUTINE pStartAddrDllFunc = (PTHREAD_START_ROUTINE)GetProcAddress(GetModuleHandle(dll_name_str), (LPCSTR)func_name.GetBuffer());
+		if (!pStartAddrDllFunc) {
+			AfxMessageBox(_T("获取pStartAddrDllFunc地址失败！"));
+			return FALSE;
+		}
+
+		hRemoteThread = CreateRemoteThread(hRemoteProcess, NULL, 0, pStartAddrDllFunc, pDllRemoteAddr, 0, NULL);
+		if (!hRemoteProcess) {
+			AfxMessageBox(_T("创建远程线程调用Dll函数失败！"));
+			return FALSE;
+		}
+
+		FreeLibrary(hDllModule);
+
+		m_edit_show_process_modules = _T("注入成功！");
+		UpdateData(FALSE);
+	}
+
+	return TRUE;
+}
+
+
+// 点击注入Dll按钮
+void CInjectDllDlg::OnBnClickedBtnInjectDll()
+{
+	/*
+		Dll全路径
+		Dll文件名 不包括后缀名
+		导出函数名
+		pid
+	*/
+	int list_cnt = m_list_ctrl_show_dlls.GetItemCount();
+
+	int cur_sel_idx = -1;
+
+	for (int i = 0; i < list_cnt; i++) {
+		if (m_list_ctrl_show_dlls.GetCheck(i)) {
+			cur_sel_idx = i;
+			break;
+		}
+	}
+
+	if (cur_sel_idx < 0) {
+		AfxMessageBox(_T("请勾选要注入的Dll！"));
+		return;
+	}
+
+	CString full_dll_path_str = m_list_ctrl_show_dlls.GetItemText(cur_sel_idx, 1);
+	CString export_func_name_str = m_list_ctrl_show_dlls.GetItemText(cur_sel_idx, 2);
+
+	CString edit_show_pid_str;
+	m_edit_ctrl_show_process.GetWindowTextW(edit_show_pid_str);
+
+	int pos = edit_show_pid_str.Find(_T(" : "));
+
+	int len = edit_show_pid_str.Delete(0, pos + 3);
+
+	if (edit_show_pid_str.IsEmpty()) {
+		AfxMessageBox(_T("请确认是否选择了进程！"));
+		return;
+	}
+
+	m_edit_show_process_modules = _T("");
+
+	/*AfxMessageBox(full_dll_path_str);
+	AfxMessageBox(export_func_name_str);
+	AfxMessageBox(edit_show_pid_str);*/
+	DWORD dwPid = _wtoi(edit_show_pid_str);
+
+	const CHAR* sz_full_dll_path;	// dll路径名
+	CHAR sz_tmp_full_dll_path[300];
+	::wsprintfA(sz_tmp_full_dll_path, "%ls", (LPCTSTR)full_dll_path_str);
+	sz_full_dll_path = sz_tmp_full_dll_path;
+
+	const CHAR* sz_func_name;   // dll导出函数名
+	CHAR sz_tmp_func_name[300];
+	::wsprintfA(sz_tmp_func_name, "%ls", (LPCTSTR)export_func_name_str);
+	sz_func_name = sz_tmp_func_name;
+
+	// F:\xxx\MFCDll1.dll
+
+	int tmp_idx = full_dll_path_str.Find(_T("\\"));
+	while (tmp_idx > 0) {
+		int len = full_dll_path_str.Delete(0, tmp_idx + 1);
+		tmp_idx = full_dll_path_str.Find(_T("\\"));
+	}
+
+	tmp_idx = full_dll_path_str.Find(_T("."));
+	full_dll_path_str.Delete(tmp_idx, full_dll_path_str.GetLength());
+	LPCWSTR dll_name_str = full_dll_path_str.AllocSysString();
+
+	//AfxMessageBox(dll_name_str);
+
+	CreateRemoteDll(sz_full_dll_path, sz_func_name, dll_name_str, dwPid);
+	//InjectRemoteDll(full_dll_path_str, export_func_name_str, dll_name_str, dwPid);
+	UpdateData(FALSE);
+}
+
+// 卸载DLL
+void CInjectDllDlg::OnBnClickedBtnUnloadDll()
+{
+	int list_cnt = m_list_ctrl_show_dlls.GetItemCount();
+
+	int cur_sel_idx = -1;
+
+	for (int i = 0; i < list_cnt; i++) {
+		if (m_list_ctrl_show_dlls.GetCheck(i)) {
+			cur_sel_idx = i;
+			break;
+		}
+	}
+
+	if (cur_sel_idx < 0) {
+		AfxMessageBox(_T("请勾选要注入的Dll！"));
+		return;
+	}
+
+	CString full_dll_path_str = m_list_ctrl_show_dlls.GetItemText(cur_sel_idx, 1);
+	CString export_func_name_str = m_list_ctrl_show_dlls.GetItemText(cur_sel_idx, 2);
+
+	CString edit_show_pid_str;
+	m_edit_ctrl_show_process.GetWindowTextW(edit_show_pid_str);
+
+	int pos = edit_show_pid_str.Find(_T(" : "));
+
+	int len = edit_show_pid_str.Delete(0, pos + 3);
+
+	if (edit_show_pid_str.IsEmpty()) {
+		AfxMessageBox(_T("请确认是否选择了进程！"));
+		return;
+	}
+
+	m_edit_show_process_modules = _T("");
+
+	/*AfxMessageBox(full_dll_path_str);
+	AfxMessageBox(export_func_name_str);
+	AfxMessageBox(edit_show_pid_str);*/
+	DWORD dwPid = _wtoi(edit_show_pid_str);
+
+	const CHAR* sz_full_dll_path;	// dll路径名
+	CHAR sz_tmp_full_dll_path[300];
+	::wsprintfA(sz_tmp_full_dll_path, "%ls", (LPCTSTR)full_dll_path_str);
+	sz_full_dll_path = sz_tmp_full_dll_path;
+
+	const CHAR* sz_func_name;   // dll导出函数名
+	CHAR sz_tmp_func_name[300];
+	::wsprintfA(sz_tmp_func_name, "%ls", (LPCTSTR)export_func_name_str);
+	sz_func_name = sz_tmp_func_name;
+
+	// F:\xxx\MFCDll1.dll
+
+	int tmp_idx = full_dll_path_str.Find(_T("\\"));
+	while (tmp_idx > 0) {
+		int len = full_dll_path_str.Delete(0, tmp_idx + 1);
+		tmp_idx = full_dll_path_str.Find(_T("\\"));
+	}
+
+	tmp_idx = full_dll_path_str.Find(_T("."));
+	full_dll_path_str.Delete(tmp_idx, full_dll_path_str.GetLength());
+	LPCWSTR dll_name_str = full_dll_path_str.AllocSysString();
+
+	//AfxMessageBox(dll_name_str);
+
+	CreateRemoteDll(sz_full_dll_path, sz_func_name, dll_name_str, dwPid, FALSE);
+	//InjectRemoteDll(full_dll_path_str, export_func_name_str, dll_name_str, dwPid);
+	UpdateData(FALSE);
 }

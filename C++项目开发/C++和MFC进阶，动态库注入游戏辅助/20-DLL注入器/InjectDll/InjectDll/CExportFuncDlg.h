@@ -29,4 +29,5 @@ public:
 
 	CString dll_name_path_str;  // 获取dll文件路径
 	CComboBox m_cbx_ctrl_show_export_funcs;
+	afx_msg void OnBnClickedBtnExportFuncSelected();
 };

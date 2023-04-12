@@ -32,6 +32,9 @@ protected:
 	afx_msg HCURSOR OnQueryDragIcon();
 	DECLARE_MESSAGE_MAP()
 public:
+	CString m_export_func_str;
+	BOOL InjectRemoteDll(CString full_dll_path, CString func_name, LPCWSTR dll_name_str, DWORD dwPid, BOOL isInject = TRUE);
+	BOOL CreateRemoteDll(const CHAR* sz_full_dll_path, const CHAR* sz_func_name, LPCWSTR dll_name_str, DWORD dwPid, BOOL isInject = TRUE);
 	BOOL ListProcessModules(DWORD dwPid);
 	afx_msg void OnBnClickedBtnSelectProcess();
 	CString m_edit_show_process_value;
@@ -45,4 +48,6 @@ public:
 	afx_msg void OnBnClickedBtnRemoveDll();
 	afx_msg void OnBnClickedBtnClearDll();
 	afx_msg void OnBnClickedBtnSetExportFunc();
+	afx_msg void OnBnClickedBtnInjectDll();
+	afx_msg void OnBnClickedBtnUnloadDll();
 };

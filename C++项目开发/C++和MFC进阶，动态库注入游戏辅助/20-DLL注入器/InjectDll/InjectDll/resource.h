@@ -28,6 +28,8 @@
 #define IDC_BTN_INJECT_DLL              1014
 #define IDC_BTN_CLEAR_DLL               1015
 #define IDC_BTN_SET_EXPORT_FUNC         1016
+#define IDC_BTN_INJECT_DLL2             1017
+#define IDC_BTN_UNLOAD_DLL              1017
 #define IDC_CBX_SELECT_EXPORT_FUNC      1018
 #define IDC_BTN_EXPORT_FUNC_SELECTED    1019
 

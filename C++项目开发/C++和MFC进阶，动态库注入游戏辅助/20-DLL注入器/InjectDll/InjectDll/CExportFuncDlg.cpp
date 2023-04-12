@@ -5,6 +5,7 @@
 #include "InjectDll.h"
 #include "afxdialogex.h"
 #include "CExportFuncDlg.h"
+#include "InjectDllDlg.h"
 
 #include <dbghelp.h>
 #pragma comment(lib, "Dbghelp.lib")
@@ -31,6 +32,7 @@ void CExportFuncDlg::DoDataExchange(CDataExchange* pDX)
 
 
 BEGIN_MESSAGE_MAP(CExportFuncDlg, CDialogEx)
+	ON_BN_CLICKED(IDC_BTN_EXPORT_FUNC_SELECTED, &CExportFuncDlg::OnBnClickedBtnExportFuncSelected)
 END_MESSAGE_MAP()
 
 
@@ -129,4 +131,27 @@ BOOL CExportFuncDlg::OnInitDialog() {
 	delete[] ppszFuncs;
 
 	return TRUE;
+}
+
+
+// 点击确定按钮，将导出函数显示到主界面 列表空间 下标 为2 这一列
+void CExportFuncDlg::OnBnClickedBtnExportFuncSelected()
+{
+	int cbx_sel_idx = m_cbx_ctrl_show_export_funcs.GetCurSel();
+
+	if (cbx_sel_idx < 0) {
+		AfxMessageBox(_T("请选择要调用的函数！"));
+		return;
+	}
+
+	CString str;
+	m_cbx_ctrl_show_export_funcs.GetLBText(cbx_sel_idx, str);
+
+	CInjectDllDlg* pDlg = (CInjectDllDlg*)(AfxGetApp()->GetMainWnd());
+	pDlg->m_export_func_str = str;
+
+	int pDlg_list_sel_idx = pDlg->m_list_ctrl_show_dlls.GetNextItem(-1, LVIS_SELECTED);
+	pDlg->m_list_ctrl_show_dlls.SetItemText(pDlg_list_sel_idx, 2, str);
+
+	OnOK();
 }
