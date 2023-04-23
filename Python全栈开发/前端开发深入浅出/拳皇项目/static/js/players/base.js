@@ -55,6 +55,10 @@ class Player extends CatGameObject{
             d = this.pressed_keys.has_key('ArrowRight');
             z = this.pressed_keys.has_key('ArrowDown');
         }
+
+        if(this.status === 0 || this.status === 1){
+            
+        }
     }
 
     update_move(){
